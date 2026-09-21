@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Centre for Disability Studies and Empowerment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://nlujcdse.in/wp-content/uploads/2025/11/IMG_20251111_100542-150x150.jpg" sizes="32x32">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --color-base: #f9f9f9;
+            --color-contrast: #111111;
+            --color-contrast-2: #636363;
+            --color-contrast-3: #A4A4A4;
+            --color-text: #1a1a2e;
+            --color-bg: #f7f4ef;
+            --spacing-sm: 1rem;
+            --spacing-md: min(2.5rem, 3vw);
+            --spacing-lg: min(4rem, 5vw);
+            --spacing-xl: min(6.5rem, 8vw);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.55;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cardo', serif;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--color-text);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        /* Header */
+        .header {
+            background-color: #000;
+            color: #fff;
+            padding: var(--spacing-md) var(--spacing-lg);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .header-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.875rem, 0.875rem + 0.542vw, 1.2rem);
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .header-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .header-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .header-nav a {
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .header-nav a:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 2.5rem + 1.283vw, 3.27rem);
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            font-family: 'Iowan Old Style', 'Apple Garamond', Baskerville, 'Times New Roman', serif;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--color-text);
+        }
+
+        .hero-image {
+            margin-top: 2rem;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--spacing-md);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background-color: var(--color-contrast);
+            color: var(--color-base);
+            padding: var(--spacing-xl) var(--spacing-lg);
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-family: 'Cardo', serif;
+            font-size: clamp(1.85rem, 1.85rem + 1.083vw, 2.5rem);
+            font-style: italic;
+            line-height: 1.2;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #00000008;
+            padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-contact p {
+            color: var(--color-text);
+        }
+
+        .footer-social h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.875rem, 0.875rem + 0.042vw, 0.9rem);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-social ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-social a {
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 1280px;
+            margin: 3rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-bottom-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .footer-bottom-title a {
+            color: inherit;
+        }
+
+        .footer-credits {
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .header-nav.active {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #000;
+                padding: 1rem;
+                z-index: 100;
+            }
+
+            .header-nav.active ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-brand">
+                <div class="header-logo">
+                    <a href="https://nlujcdse.in/">
+                        <img src="https://nlujcdse.in/wp-content/uploads/2025/12/CDSE-Logo-no-BG.png" alt="CDSE Logo">
+                    </a>
+                </div>
+                <h1 class="header-title">
+                    <a href="https://nlujcdse.in/">The Centre for Disability Studies and Empowerment</a>
+                </h1>
+            </div>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.header-nav').classList.toggle('active')" aria-label="Open menu">
+                <svg viewBox="0 0 24 24"><path d="M4 7.5h16v1.5H4zM4 15h16v1.5H4z"/></svg>
+            </button>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="https://nlujcdse.in/__trashed/">About the Centre</a></li>
+                    <li><a href="https://nlujcdse.in/our-projects/">Our Projects</a></li>
+                    <li><a href="https://nlujcdse.in/blogs-2/">Blogs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Centre for Disability Studies &amp; Empowerment</h1>
+            <p class="hero-description">
+                The Centre for Disability Studies and Empowerment (CDSE) is an academic and research-driven centre committed to advancing disability justice, inclusive policy development, and empowerment-based scholarship.
+            </p>
+            <div class="hero-image">
+                <img src="https://nlujcdse.in/wp-content/uploads/2025/12/IMG_5113-scaled.jpg" alt="Centre for Disability Studies and Empowerment">
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <blockquote>
+                &ldquo;There is no greater disability in society than the inability to see a person as more.&rdquo;
+            </blockquote>
+            <p class="quote-author">Robert. M. Hensel</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-contact">
+                <p>Email us at cdse@nlujodhpur.ac.in</p>
+            </div>
+            <div class="footer-social">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="https://www.linkedin.com/company/centre-for-disability-studies-and-empowerment-cdse/?viewAsMember=true">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/cdse.nluj/">Instagram</a></li>
+                    <li><a href="https://x.com/CdseNluj">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-bottom-title"><a href="https://nlujcdse.in/">The Centre for Disability Studies and Empowerment</a></p>
+             </div>
+    </footer>
+
+</body>
+</html>
