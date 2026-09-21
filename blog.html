@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog &amp; Call for Blogs — CDSE, NLU Jodhpur</title>
+<meta name="description" content="Read CDSE's call for blogs on disability rights, accessibility, and inclusive policy, and submit your own blog for review.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="a11y-toolbar" role="region" aria-label="Accessibility settings">
+  <div class="container">
+    <span class="label">Accessibility:</span>
+    <button type="button" id="font-decrease" aria-label="Decrease text size">A−</button>
+    <button type="button" id="font-reset" aria-label="Reset text size">A</button>
+    <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
+    <button type="button" id="contrast-toggle" aria-pressed="false">High contrast</button>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">CDSE</span>
+      <span class="brand-text"><strong>CDSE</strong><span>NLU Jodhpur</span></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+      <span class="visually-hidden">Toggle navigation menu</span>☰
+    </button>
+    <nav class="main-nav" id="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Our Projects</a></li>
+        <li><a href="blog.html" aria-current="page">Blog</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="report-issue.html">Report an Issue</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+  <nav class="breadcrumb container" aria-label="Breadcrumb"><a href="index.html">Home</a> / Blog</nav>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Blog</h1>
+      <p class="lead">Perspectives on disability rights, accessibility, and inclusive policy — written by students, scholars, and practitioners.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Call for blogs</p>
+      <h2>Write for the CDSE Blog</h2>
+      <p class="section-intro">CDSE invites blog submissions on disability rights, accessibility, inclusive policy, and legal empowerment. Submissions are accepted on a rolling basis.</p>
+
+      <div class="grid grid-2" style="margin-top:1.5rem;">
+        <div class="card">
+          <h3>Format</h3>
+          <ul>
+            <li>Main text: 1000–1500 words</li>
+            <li>Abstract: approximately 100 words</li>
+            <li>Individual or co-authorship (up to two authors)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Content requirements</h3>
+          <ul>
+            <li>Original submissions only — not under review elsewhere</li>
+            <li>All sources hyperlinked within the text</li>
+            <li>Avoid footnotes unless absolutely necessary</li>
+            <li>Similarity/plagiarism must not exceed 10%</li>
+            <li>AI-generated content is strictly prohibited</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="form-note">Review process: submissions are accepted on a rolling basis. The Editorial Board conducts a preliminary screening followed by a detailed peer review.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <p class="eyebrow">Submit</p>
+      <h2>Submit Your Blog</h2>
+
+      <form class="form-card" id="blog-form" name="blog-submission" method="POST" action="/" data-netlify="true">
+        <input type="hidden" name="form-name" value="blog-submission">
+        <div class="form-status" id="blog-status"></div>
+
+        <div class="form-row">
+          <label for="blog-title">Blog title <span class="required-mark" aria-hidden="true">*</span></label>
+          <input type="text" id="blog-title" name="title" required>
+        </div>
+
+        <div class="form-row">
+          <label for="blog-authors">Author name(s) <span class="required-mark" aria-hidden="true">*</span></label>
+          <p class="hint" id="blog-authors-hint">Up to two co-authors. Separate names with a comma.</p>
+          <input type="text" id="blog-authors" name="authors" aria-describedby="blog-authors-hint" required>
+        </div>
+
+        <div class="form-row">
+          <label for="blog-email">Email address <span class="required-mark" aria-hidden="true">*</span></label>
+          <input type="email" id="blog-email" name="email" required>
+        </div>
+
+        <div class="form-row">
+          <label for="blog-abstract">Abstract (~100 words) <span class="required-mark" aria-hidden="true">*</span></label>
+          <textarea id="blog-abstract" name="abstract" rows="4" required></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="blog-text">Full blog text (1000–1500 words) <span class="required-mark" aria-hidden="true">*</span></label>
+          <p class="hint" id="blog-text-hint">Paste your full draft here, with sources hyperlinked in the text.</p>
+          <textarea id="blog-text" name="blog_text" rows="10" aria-describedby="blog-text-hint" required></textarea>
+        </div>
+
+        <fieldset class="form-row">
+          <legend>I confirm this submission is original and not under review elsewhere, complies with the &lt;10% similarity requirement, and contains no AI-generated content. <span class="required-mark" aria-hidden="true">*</span></legend>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="declaration" required> I confirm the above</label>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary">Submit Blog</button>
+        <p class="form-note">Prefer email? Send submissions directly to <a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a>.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h2>CDSE, NLU Jodhpur</h2>
+        <p>Centre for Disability Studies and Empowerment<br>National Law University, Jodhpur, Rajasthan, India</p>
+        <div class="social-links" aria-label="Social media">
+          <a href="#" aria-label="CDSE on LinkedIn">in</a>
+          <a href="#" aria-label="CDSE on Instagram">ig</a>
+          <a href="#" aria-label="CDSE on Twitter / X">X</a>
+        </div>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="projects.html">Our Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Support</h2>
+        <ul>
+          <li><a href="report-issue.html">Report an Accessibility Issue</a></li>
+          <li><a href="contact.html">Contact / Feedback</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a></li>
+          <li>National Law University, Jodhpur, NH 65, Mandore–Bhopalgarh Road, Jodhpur, Rajasthan 342304</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="current-year">2026</span> Centre for Disability Studies and Empowerment, NLU Jodhpur.</span>
+      <span>Faculty Chairperson: Dr. Rashmi Mathur</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
