@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Report an Accessibility Issue — CDSE, NLU Jodhpur</title>
 <meta name="description" content="Report a campus accessibility issue — ramps, signage, surfaces, and more — to CDSE's accessibility audit team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="https://nlujcdse.in/wp-content/uploads/2025/11/IMG_20251111_100542-150x150.jpg" sizes="32x32">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,19 +24,20 @@
   </div>
 </div>
 
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true">CDSE</span>
-      <span class="brand-text"><strong>CDSE</strong><span>NLU Jodhpur</span></span>
-    </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
-      <span class="visually-hidden">Toggle navigation menu</span>☰
+<header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-logo">
+        <a href="index.html"><img src="https://nlujcdse.in/wp-content/uploads/2025/12/CDSE-Logo-no-BG.png" alt="CDSE Logo"></a>
+      </div>
+      <h1 class="header-title"><a href="index.html">The Centre for Disability Studies and Empowerment</a></h1>
+    </div>
+    <button class="mobile-menu-btn" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h16v1.5H4zM4 15h16v1.5H4z"/></svg>
     </button>
-    <nav class="main-nav" id="main-nav" aria-label="Primary">
+    <nav class="header-nav" id="primary-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html">About the Centre</a></li>
         <li><a href="projects.html">Our Projects</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="get-involved.html">Get Involved</a></li>
@@ -46,111 +51,66 @@
 <main id="main-content">
   <nav class="breadcrumb container" aria-label="Breadcrumb"><a href="index.html">Home</a> / Report an Accessibility Issue</nav>
 
-  <section class="hero">
+  <section class="page-hero">
     <div class="container">
       <h1>Report an Accessibility Issue</h1>
-      <p class="lead">Help CDSE keep NLU Jodhpur accessible. Tell us about ramps, railings, surfaces, signage, restrooms, digital resources, or anything else that needs attention — this feeds directly into our campus accessibility audits.</p>
+      <p class="lead">Help CDSE keep NLU Jodhpur accessible. Tell us about ramps, railings, surfaces, signage, restrooms, digital resources, or anything else that needs attention.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <form class="form-card" id="survey-form" name="accessibility-survey" method="POST" action="/" data-netlify="true">
-        <input type="hidden" name="form-name" value="accessibility-survey">
-        <div class="form-status" id="survey-status"></div>
+      <div class="setup-note">
+        <strong>Setup needed:</strong> this embeds a Google Form. Create a form with fields for
+        Name (optional), Email (optional), Type of issue (Ramp / Railing / Surface / Signage /
+        Restroom / Digital resource / Golf-cart service / Other), Location on campus, Description,
+        and Urgency (Low / Medium / High). Then replace <code>FORM_ID_ACCESSIBILITY_REPORT</code>
+        below with the real form ID. Apps Script can auto-notify the audit team by email the moment
+        a "High" urgency report comes in — see <code>docs/google-forms-setup.md</code>.
+      </div>
 
-        <div class="form-row">
-          <label for="rep-name">Your name</label>
-          <p class="hint" id="rep-name-hint">Optional — leave blank to report anonymously.</p>
-          <input type="text" id="rep-name" name="name" aria-describedby="rep-name-hint">
-        </div>
-
-        <div class="form-row">
-          <label for="rep-email">Email address</label>
-          <p class="hint" id="rep-email-hint">Optional — only needed if you'd like a follow-up.</p>
-          <input type="email" id="rep-email" name="email" aria-describedby="rep-email-hint">
-        </div>
-
-        <fieldset class="form-row">
-          <legend>Type of issue <span class="required-mark" aria-hidden="true">*</span></legend>
-          <div class="radio-group">
-            <label><input type="radio" name="issue_type" value="Ramp / incline" required> Ramp / incline</label>
-            <label><input type="radio" name="issue_type" value="Railing"> Railing</label>
-            <label><input type="radio" name="issue_type" value="Surface (slippery, uneven)"> Surface (slippery, uneven)</label>
-            <label><input type="radio" name="issue_type" value="Signage"> Signage</label>
-            <label><input type="radio" name="issue_type" value="Restroom / washroom"> Restroom / washroom</label>
-            <label><input type="radio" name="issue_type" value="Digital resource (website, document)"> Digital resource (website, document)</label>
-            <label><input type="radio" name="issue_type" value="Golf-cart mobility service"> Golf-cart mobility service</label>
-            <label><input type="radio" name="issue_type" value="Other"> Other</label>
-          </div>
-        </fieldset>
-
-        <div class="form-row">
-          <label for="rep-location">Location on campus <span class="required-mark" aria-hidden="true">*</span></label>
-          <input type="text" id="rep-location" name="location" placeholder="e.g. Academic Block, near Library entrance" required>
-        </div>
-
-        <div class="form-row">
-          <label for="rep-description">Describe the issue <span class="required-mark" aria-hidden="true">*</span></label>
-          <textarea id="rep-description" name="description" rows="6" required></textarea>
-        </div>
-
-        <fieldset class="form-row">
-          <legend>How urgent is this?</legend>
-          <div class="radio-group">
-            <label><input type="radio" name="urgency" value="Low"> Low — inconvenient but manageable</label>
-            <label><input type="radio" name="urgency" value="Medium"> Medium — should be fixed soon</label>
-            <label><input type="radio" name="urgency" value="High"> High — safety risk</label>
-          </div>
-        </fieldset>
-
-        <button type="submit" class="btn btn-primary">Submit Report</button>
-        <p class="form-note">For urgent safety concerns, please also contact campus security directly in addition to filing this report.</p>
-      </form>
+      <div class="form-card">
+        <iframe class="gform-embed" title="Accessibility issue report form"
+          src="https://docs.google.com/forms/d/e/FORM_ID_ACCESSIBILITY_REPORT/viewform?embedded=true"
+          loading="lazy">Loading…</iframe>
+        <p class="gform-fallback">
+          Form not loading? <a href="https://docs.google.com/forms/d/e/FORM_ID_ACCESSIBILITY_REPORT/viewform" target="_blank" rel="noopener">Open it in a new tab</a>,
+          or email us directly at <a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a>.
+        </p>
+        <p class="gform-fallback">For urgent safety concerns, please also contact campus security directly in addition to filing this report.</p>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h2>CDSE, NLU Jodhpur</h2>
-        <p>Centre for Disability Studies and Empowerment<br>National Law University, Jodhpur, Rajasthan, India</p>
-        <div class="social-links" aria-label="Social media">
-          <a href="#" aria-label="CDSE on LinkedIn">in</a>
-          <a href="#" aria-label="CDSE on Instagram">ig</a>
-          <a href="#" aria-label="CDSE on Twitter / X">X</a>
-        </div>
-      </div>
-      <div>
-        <h2>Explore</h2>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Our Projects</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="get-involved.html">Get Involved</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Support</h2>
-        <ul>
-          <li><a href="report-issue.html">Report an Accessibility Issue</a></li>
-          <li><a href="contact.html">Contact / Feedback</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Contact</h2>
-        <ul>
-          <li><a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a></li>
-          <li>National Law University, Jodhpur, NH 65, Mandore–Bhopalgarh Road, Jodhpur, Rajasthan 342304</li>
-        </ul>
-      </div>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-contact">
+      <p>Email us at <a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a></p>
+      <p>National Law University, Jodhpur, Rajasthan, India</p>
     </div>
-    <div class="footer-bottom">
-      <span>© <span id="current-year">2026</span> Centre for Disability Studies and Empowerment, NLU Jodhpur.</span>
-      <span>Faculty Chairperson: Dr. Rashmi Mathur</span>
+    <div class="footer-nav">
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="about.html">About the Centre</a></li>
+        <li><a href="projects.html">Our Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="report-issue.html">Report an Issue</a></li>
+      </ul>
     </div>
+    <div class="footer-social">
+      <h3>Social</h3>
+      <ul>
+        <li><a href="https://www.linkedin.com/company/centre-for-disability-studies-and-empowerment-cdse/?viewAsMember=true" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/cdse.nluj/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://x.com/CdseNluj" target="_blank" rel="noopener">Twitter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-bottom-title"><a href="index.html">The Centre for Disability Studies and Empowerment</a></p>
+    <p class="footer-credits">© <span id="current-year">2026</span> CDSE, NLU Jodhpur</p>
   </div>
 </footer>
 

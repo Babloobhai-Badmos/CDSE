@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Get Involved — CDSE, NLU Jodhpur</title>
 <meta name="description" content="Apply to join CDSE as a member or volunteer for our disability rights, accessibility, and inclusive policy work at NLU Jodhpur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="https://nlujcdse.in/wp-content/uploads/2025/11/IMG_20251111_100542-150x150.jpg" sizes="32x32">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,19 +24,20 @@
   </div>
 </div>
 
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true">CDSE</span>
-      <span class="brand-text"><strong>CDSE</strong><span>NLU Jodhpur</span></span>
-    </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
-      <span class="visually-hidden">Toggle navigation menu</span>☰
+<header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-logo">
+        <a href="index.html"><img src="https://nlujcdse.in/wp-content/uploads/2025/12/CDSE-Logo-no-BG.png" alt="CDSE Logo"></a>
+      </div>
+      <h1 class="header-title"><a href="index.html">The Centre for Disability Studies and Empowerment</a></h1>
+    </div>
+    <button class="mobile-menu-btn" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h16v1.5H4zM4 15h16v1.5H4z"/></svg>
     </button>
-    <nav class="main-nav" id="main-nav" aria-label="Primary">
+    <nav class="header-nav" id="primary-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html">About the Centre</a></li>
         <li><a href="projects.html">Our Projects</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="get-involved.html" aria-current="page">Get Involved</a></li>
@@ -46,7 +51,7 @@
 <main id="main-content">
   <nav class="breadcrumb container" aria-label="Breadcrumb"><a href="index.html">Home</a> / Get Involved</nav>
 
-  <section class="hero">
+  <section class="page-hero">
     <div class="container">
       <h1>Get Involved</h1>
       <p class="lead">Join CDSE as a member, or volunteer your time for our research, advocacy, and campus-accessibility projects.</p>
@@ -70,98 +75,60 @@
 
   <section class="section section-alt">
     <div class="container">
+      <p class="eyebrow">Apply</p>
       <h2>Apply to Join CDSE</h2>
 
-      <form class="form-card" id="membership-form" name="membership-application" method="POST" action="/" data-netlify="true">
-        <input type="hidden" name="form-name" value="membership-application">
-        <div class="form-status" id="membership-status"></div>
+      <div class="setup-note">
+        <strong>Setup needed:</strong> this embeds a Google Form. Create a form with fields for
+        Full name, Email, Phone (optional), Year of study / role, Interest
+        (Full membership / Event-based volunteering / Either), Areas of interest, and
+        "Why do you want to join CDSE?". Then replace <code>FORM_ID_MEMBERSHIP</code> below
+        with the real form ID. Member records can later be pushed into Supabase's
+        <code>members</code> table via the Apps Script automation — see
+        <code>docs/google-forms-setup.md</code>.
+      </div>
 
-        <div class="form-row">
-          <label for="mem-name">Full name <span class="required-mark" aria-hidden="true">*</span></label>
-          <input type="text" id="mem-name" name="name" required>
-        </div>
-
-        <div class="form-row">
-          <label for="mem-email">Email address <span class="required-mark" aria-hidden="true">*</span></label>
-          <input type="email" id="mem-email" name="email" required>
-        </div>
-
-        <div class="form-row">
-          <label for="mem-phone">Phone number</label>
-          <input type="tel" id="mem-phone" name="phone">
-        </div>
-
-        <div class="form-row">
-          <label for="mem-year">Year of study / role <span class="required-mark" aria-hidden="true">*</span></label>
-          <input type="text" id="mem-year" name="year_role" placeholder="e.g. 3rd year, B.A. LL.B." required>
-        </div>
-
-        <fieldset class="form-row">
-          <legend>I am interested in <span class="required-mark" aria-hidden="true">*</span></legend>
-          <div class="radio-group">
-            <label><input type="radio" name="interest" value="Full membership" required> Full membership</label>
-            <label><input type="radio" name="interest" value="Event-based volunteering" required> Event-based volunteering</label>
-            <label><input type="radio" name="interest" value="Either"> Either — open to both</label>
-          </div>
-        </fieldset>
-
-        <div class="form-row">
-          <label for="mem-interest-area">Areas of interest</label>
-          <p class="hint" id="mem-area-hint">e.g. research, policy, accessibility audits, legal literacy, events, design</p>
-          <input type="text" id="mem-interest-area" name="interest_area" aria-describedby="mem-area-hint">
-        </div>
-
-        <div class="form-row">
-          <label for="mem-why">Why do you want to join CDSE?</label>
-          <textarea id="mem-why" name="motivation" rows="5"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit Application</button>
-      </form>
+      <div class="form-card">
+        <iframe class="gform-embed" title="Membership and volunteering application"
+          src="https://docs.google.com/forms/d/e/FORM_ID_MEMBERSHIP/viewform?embedded=true"
+          loading="lazy">Loading…</iframe>
+        <p class="gform-fallback">
+          Form not loading? <a href="https://docs.google.com/forms/d/e/FORM_ID_MEMBERSHIP/viewform" target="_blank" rel="noopener">Open it in a new tab</a>,
+          or email us directly at <a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a>.
+        </p>
+      </div>
     </div>
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h2>CDSE, NLU Jodhpur</h2>
-        <p>Centre for Disability Studies and Empowerment<br>National Law University, Jodhpur, Rajasthan, India</p>
-        <div class="social-links" aria-label="Social media">
-          <a href="#" aria-label="CDSE on LinkedIn">in</a>
-          <a href="#" aria-label="CDSE on Instagram">ig</a>
-          <a href="#" aria-label="CDSE on Twitter / X">X</a>
-        </div>
-      </div>
-      <div>
-        <h2>Explore</h2>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Our Projects</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="get-involved.html">Get Involved</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Support</h2>
-        <ul>
-          <li><a href="report-issue.html">Report an Accessibility Issue</a></li>
-          <li><a href="contact.html">Contact / Feedback</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Contact</h2>
-        <ul>
-          <li><a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a></li>
-          <li>National Law University, Jodhpur, NH 65, Mandore–Bhopalgarh Road, Jodhpur, Rajasthan 342304</li>
-        </ul>
-      </div>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-contact">
+      <p>Email us at <a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a></p>
+      <p>National Law University, Jodhpur, Rajasthan, India</p>
     </div>
-    <div class="footer-bottom">
-      <span>© <span id="current-year">2026</span> Centre for Disability Studies and Empowerment, NLU Jodhpur.</span>
-      <span>Faculty Chairperson: Dr. Rashmi Mathur</span>
+    <div class="footer-nav">
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="about.html">About the Centre</a></li>
+        <li><a href="projects.html">Our Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="report-issue.html">Report an Issue</a></li>
+      </ul>
     </div>
+    <div class="footer-social">
+      <h3>Social</h3>
+      <ul>
+        <li><a href="https://www.linkedin.com/company/centre-for-disability-studies-and-empowerment-cdse/?viewAsMember=true" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/cdse.nluj/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://x.com/CdseNluj" target="_blank" rel="noopener">Twitter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-bottom-title"><a href="index.html">The Centre for Disability Studies and Empowerment</a></p>
+    <p class="footer-credits">© <span id="current-year">2026</span> CDSE, NLU Jodhpur</p>
   </div>
 </footer>
 

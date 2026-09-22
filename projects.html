@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Projects — CDSE, NLU Jodhpur</title>
 <meta name="description" content="Explore CDSE's projects: the Rajiv K. Luthra – NLUJ Accessibility Lab, the campus golf-cart mobility service, and our accessibility audits of NLU Jodhpur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="https://nlujcdse.in/wp-content/uploads/2025/11/IMG_20251111_100542-150x150.jpg" sizes="32x32">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,19 +24,20 @@
   </div>
 </div>
 
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true">CDSE</span>
-      <span class="brand-text"><strong>CDSE</strong><span>NLU Jodhpur</span></span>
-    </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
-      <span class="visually-hidden">Toggle navigation menu</span>☰
+<header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-logo">
+        <a href="index.html"><img src="https://nlujcdse.in/wp-content/uploads/2025/12/CDSE-Logo-no-BG.png" alt="CDSE Logo"></a>
+      </div>
+      <h1 class="header-title"><a href="index.html">The Centre for Disability Studies and Empowerment</a></h1>
+    </div>
+    <button class="mobile-menu-btn" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h16v1.5H4zM4 15h16v1.5H4z"/></svg>
     </button>
-    <nav class="main-nav" id="main-nav" aria-label="Primary">
+    <nav class="header-nav" id="primary-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html">About the Centre</a></li>
         <li><a href="projects.html" aria-current="page">Our Projects</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="get-involved.html">Get Involved</a></li>
@@ -46,7 +51,7 @@
 <main id="main-content">
   <nav class="breadcrumb container" aria-label="Breadcrumb"><a href="index.html">Home</a> / Our Projects</nav>
 
-  <section class="hero">
+  <section class="page-hero">
     <div class="container">
       <h1>Our Projects</h1>
       <p class="lead">From physical infrastructure to institutional facilities, CDSE turns audits and advocacy into concrete change on campus.</p>
@@ -58,8 +63,8 @@
       <span class="tag">Flagship facility</span>
       <h2>Rajiv K. Luthra – NLUJ Accessibility Lab</h2>
       <p>The first dedicated accessibility facility of its kind at National Law University, Jodhpur, administered under CDSE. Established through a Memorandum of Understanding signed between the Rajiv K. Luthra Foundation and NLUJ in December 2025, the Lab was formally inaugurated in May 2026 — fittingly, by students with special abilities.</p>
-      <p>The state-of-the-art facility supports students with visual, auditory, locomotor, learning, and other disabilities through both academic and infrastructural assistance. It houses:</p>
-      <ul>
+      <p style="margin-top:1rem;">The state-of-the-art facility supports students with visual, auditory, locomotor, learning, and other disabilities through both academic and infrastructural assistance. It houses:</p>
+      <ul style="margin:1rem 0 1rem 1.25rem;">
         <li>Screen readers</li>
         <li>Magnifiers</li>
         <li>Accessible digital repositories</li>
@@ -85,52 +90,40 @@
       <div class="card" style="margin-top:1.5rem;">
         <h3>Spotted an issue on campus?</h3>
         <p>Help us keep the audit current — report accessibility issues you encounter and our team will follow up.</p>
-        <a class="btn btn-secondary" href="report-issue.html">Report an Accessibility Issue</a>
+        <a class="btn btn-secondary" href="report-issue.html" style="margin-top:1rem;">Report an Accessibility Issue</a>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h2>CDSE, NLU Jodhpur</h2>
-        <p>Centre for Disability Studies and Empowerment<br>National Law University, Jodhpur, Rajasthan, India</p>
-        <div class="social-links" aria-label="Social media">
-          <a href="#" aria-label="CDSE on LinkedIn">in</a>
-          <a href="#" aria-label="CDSE on Instagram">ig</a>
-          <a href="#" aria-label="CDSE on Twitter / X">X</a>
-        </div>
-      </div>
-      <div>
-        <h2>Explore</h2>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="projects.html">Our Projects</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="get-involved.html">Get Involved</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Support</h2>
-        <ul>
-          <li><a href="report-issue.html">Report an Accessibility Issue</a></li>
-          <li><a href="contact.html">Contact / Feedback</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Contact</h2>
-        <ul>
-          <li><a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a></li>
-          <li>National Law University, Jodhpur, NH 65, Mandore–Bhopalgarh Road, Jodhpur, Rajasthan 342304</li>
-        </ul>
-      </div>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-contact">
+      <p>Email us at <a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a></p>
+      <p>National Law University, Jodhpur, Rajasthan, India</p>
     </div>
-    <div class="footer-bottom">
-      <span>© <span id="current-year">2026</span> Centre for Disability Studies and Empowerment, NLU Jodhpur.</span>
-      <span>Faculty Chairperson: Dr. Rashmi Mathur</span>
+    <div class="footer-nav">
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="about.html">About the Centre</a></li>
+        <li><a href="projects.html">Our Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="report-issue.html">Report an Issue</a></li>
+      </ul>
     </div>
+    <div class="footer-social">
+      <h3>Social</h3>
+      <ul>
+        <li><a href="https://www.linkedin.com/company/centre-for-disability-studies-and-empowerment-cdse/?viewAsMember=true" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/cdse.nluj/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://x.com/CdseNluj" target="_blank" rel="noopener">Twitter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-bottom-title"><a href="index.html">The Centre for Disability Studies and Empowerment</a></p>
+    <p class="footer-credits">© <span id="current-year">2026</span> CDSE, NLU Jodhpur</p>
   </div>
 </footer>
 
