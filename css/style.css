@@ -87,9 +87,9 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ---- Accessibility controls (live inside the nav "More" menu, every page) ---- */
 .nav-more-a11y {
-  padding: 0.6rem 0.75rem 0.75rem;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
-  margin-bottom: 0.4rem;
+  padding: 0.75rem 0.75rem 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin-top: 0.4rem;
 }
 .nav-more-a11y .nav-more-label {
   display: block;
@@ -168,26 +168,23 @@ img { max-width: 100%; height: auto; display: block; }
 .header-nav a[aria-current="page"] { text-decoration: underline; }
 
 /* "More" overflow menu — keeps the original 3-item nav layout intact while
-   giving access to the extra pages (Get Involved / Report an Issue / Contact). */
-.nav-more { position: relative; }
+   giving access to the extra pages (Report an Issue / Get Involved / Contact)
+   and the accessibility controls, behind a plain three-bar icon button. */
+.nav-more { position: relative; display: flex; align-items: center; }
 .nav-more-btn {
   background: transparent;
   border: 1px solid rgba(255,255,255,0.5);
   color: #fff;
   border-radius: 4px;
-  padding: 0.35rem 0.7rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 0.9rem;
+  padding: 0.45rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: center;
 }
+.nav-more-btn svg { width: 20px; height: 20px; fill: currentColor; display: block; }
 .nav-more-btn:hover,
 .nav-more-btn[aria-expanded="true"] { background: #fff; color: #000; }
-.nav-more-btn .chevron { transition: transform 0.15s ease; }
-.nav-more-btn[aria-expanded="true"] .chevron { transform: rotate(180deg); }
 
 .nav-more-menu {
   display: none;
@@ -345,6 +342,38 @@ img { max-width: 100%; height: auto; display: block; }
 }
 @media (max-width: 768px) {
   .cover-section { background-attachment: scroll; min-height: 32vh; }
+}
+
+/* ---- Scroll reveal: image pins as a full-screen backdrop, then the text
+   panel scrolls up over it and covers it — image "goes behind" the text. ---- */
+.scroll-reveal { position: relative; }
+.scroll-reveal-media {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.scroll-reveal-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+}
+.scroll-reveal-copy {
+  position: relative;
+  z-index: 1;
+  margin-top: -45vh;
+  background: var(--color-bg);
+  border-radius: 32px 32px 0 0;
+  padding: 3.5rem var(--spacing-lg) 4rem;
+  box-shadow: 0 -30px 60px -20px rgba(0,0,0,0.35);
+}
+.scroll-reveal-copy .container { max-width: 760px; }
+@media (max-width: 768px) {
+  .scroll-reveal-media { height: 70vh; }
+  .scroll-reveal-copy { margin-top: -30vh; padding: 2.5rem var(--spacing-lg) 3rem; }
 }
 
 /* ---- Flanking layout: image / text / image (or reversed) ---- */
