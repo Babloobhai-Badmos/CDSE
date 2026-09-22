@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs - The Centre for Disability Studies and Empowerment</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fff;
+        }
+        a { color: inherit; }
+        img { max-width: 100%; height: auto; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* Header */
+        header {
+            background: #000;
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo-area { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-area img { width: 50px; height: 50px; object-fit: contain; }
+        .site-title { font-size: 1.1rem; font-weight: 600; }
+        .site-title a { color: #fff; text-decoration: none; }
+        nav ul { list-style: none; display: flex; gap: 1.5rem; }
+        nav a { color: #fff; text-decoration: none; font-size: 0.95rem; }
+        nav a:hover { text-decoration: underline; }
+
+        /* Mobile nav */
+        .menu-toggle { display: none; background: none; border: none; color: #fff; cursor: pointer; }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 100%; right: 0; background: #000; padding: 1rem 1.5rem; min-width: 200px; }
+            nav ul.open { display: flex; }
+        }
+
+        /* Page title */
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            padding: 3rem 0 1rem;
+        }
+
+        /* Centre heading & quote */
+        .centre-heading { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .centre-quote {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Archives */
+        .archives-section {
+            background: #f5f5f0;
+            padding: 3rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+        .blog-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        .blog-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.4; }
+        .blog-card h3 a { text-decoration: none; }
+        .blog-card h3 a:hover { text-decoration: underline; }
+        .blog-card p { font-size: 0.9rem; color: #555; }
+
+        /* Submission Guidelines */
+        .guidelines-section { padding: 3rem 0; }
+        .guidelines-section .section-title { margin-bottom: 0.5rem; }
+        .guidelines-intro { text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #444; }
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+        }
+        @media (max-width: 700px) { .guidelines-grid { grid-template-columns: 1fr; } }
+        .guidelines-grid h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .guidelines-grid ul { padding-left: 1.5rem; line-height: 1.75; }
+        .guidelines-grid li { margin-bottom: 0.4rem; }
+        .submission-process h3 { text-align: center; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .submission-process ul { max-width: 700px; margin: 0 auto; padding-left: 1.5rem; line-height: 1.75; }
+        .submission-process li { margin-bottom: 0.4rem; }
+
+        /* Footer quote */
+        .footer-quote {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+        .footer-quote blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            line-height: 1.4;
+        }
+        .footer-quote .org-name { font-size: 1rem; margin-bottom: 0.25rem; }
+        .footer-quote .org-location { font-size: 0.85rem; color: #999; font-weight: 300; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo-area">
+                <a href="https://nlujcdse.in/">
+                    <img src="https://nlujcdse.in/wp-content/uploads/2025/12/CDSE-Logo-no-BG.png" alt="The Centre for Disability Studies and Empowerment">
+                </a>
+                <h1 class="site-title"><a href="https://nlujcdse.in">The Centre for Disability Studies and Empowerment</a></h1>
+            </div>
+            <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Open menu">&#9776;</button>
+            <nav>
+                <ul>
+                    <li><a href="https://nlujcdse.in/__trashed/">About the Centre</a></li>
+                    <li><a href="https://nlujcdse.in/our-projects/">Our Projects</a></li>
+                    <li><a href="https://nlujcdse.in/blogs-2/" aria-current="page">Blogs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title container">BLOGS</h1>
+
+        <div class="container">
+            <h2 class="centre-heading">THE CENTRE FOR DISABILITY STUDIES AND EMPOWERMENT</h2>
+            <p class="centre-quote">&ldquo;Advancing disability justice through rigorous legal scholarship, inclusive policy analysis, and empowerment-driven discourse.&rdquo;</p>
+        </div>
+
+        <section class="archives-section">
+            <div class="container">
+                <h2 class="section-title">ARCHIVES</h2>
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/the-4-that-isnt-how-indias-disability-reservation-law-loses-its-own-seats/">THE 4% THAT ISN'T: HOW INDIA'S DISABILITY RESERVATION LAW LOSES ITS OWN SEATS</a></h3>
+                        <p>Ronit Agarwal and Tanu Tyagi are second-year students at National Law University, Jodhpur.</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/the-right-to-choose-why-disability-rights-are-about-more-than-protection/">THE RIGHT TO CHOOSE: WHY DISABILITY RIGHTS ARE ABOUT MORE THAN PROTECTION</a></h3>
+                        <p>Shambhavi Prakash is a first-year B.A. LL.B. (Hons.) student at National Law University, Delhi.</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/digital-accessibility-as-a-civil-right-the-legal-and-psychological-impacts-of-dark-patterns-on-disabled-consumers/">DIGITAL ACCESSIBILITY AS A CIVIL RIGHT: THE LEGAL AND PSYCHOLOGICAL IMPACTS OF DARK PATTERNS ON DISABLED CONSUMERS</a></h3>
+                        <p>Aaditya Prasad A and Anaan Noor are 4th Year B.A. LL.B. (Hons.) students at The National University of Advanced Legal Studies (NUALS), Kochi.</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/the-invisible-influence-of-media-on-disability-rights/">THE INVISIBLE INFLUENCE OF MEDIA ON DISABILITY RIGHTS</a></h3>
+                        <p>Suhani Goel, First Year B.A. Mass Communication Student at Symbiosis, Pune and Samay Tulsyan, Fourth Year B.B.A. L.L.B (Trade Hons.) student at National Law University, Jodhpur</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/algorithmic-exclusion-and-disability-can-indian-law-respond-to-ai-driven-discrimination/">ALGORITHMIC EXCLUSION AND DISABILITY: CAN INDIAN LAW RESPOND TO AI DRIVEN DISCRIMINATION?</a></h3>
+                        <p>Nandhana V and Aditya Garg, They are 4th year law students at National Law University, Jodhpur</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/corporate-discrimination-liability-the-way-section-3-of-the-rpwd-act-might-transform-indian-employment-law/">CORPORATE DISCRIMINATION LIABILITY: THE WAY SECTION 3 OF THE RPwD ACT MIGHT TRANSFORM INDIAN EMPLOYMENT LAW</a></h3>
+                        <p>Gauraansh Arora and Joy Kukkar, They are 2nd year law students at National Law University, Jodhpur</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/the-architecture-of-dignity-social-realities-and-the-fight-for-disability-rights/">THE ARCHITECTURE OF DIGNITY: SOCIAL REALITIES AND THE FIGHT FOR DISABILITY RIGHTS</a></h3>
+                        <p>Sunaina is a law graduate from Panjab University Chandigarh.</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/rethinking-electoral-exclusion-intellectual-disability-and-the-right-to-vote/">RETHINKING ELECTORAL EXCLUSION: INTELLECTUAL DISABILITY AND THE RIGHT TO VOTE</a></h3>
+                        <p>Namandeep Kaur, 4th Year, B.A. LL.B. (Hons.) student at Rajiv Gandhi National University of Law, Punjab</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/when-kyc-excludes-disability-rights-and-digital-finance/">WHEN KYC EXCLUDES: DISABILITY RIGHTS AND DIGITAL FINANCE</a></h3>
+                        <p>Devansh Awasthi, B.A. LL.B. (Hons.), III Year student at Dr. Ram Manohar Lohiya National Law University.</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/from-medical-benchmarks-to-functional-capability-redefining-reasonable-accommodation-after-prabhu-kumar-v-state-of-himachal-pradesh/">FROM MEDICAL BENCHMARKS TO FUNCTIONAL CAPABILITY: REDEFINING REASONABLE ACCOMMODATION AFTER PRABHU KUMAR V. STATE OF HIMACHAL PRADESH</a></h3>
+                        <p>Mihika Joshi, Second Year student at National Law University, Jodhpur</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/ramps-without-rights-the-limits-of-accommodation-in-government-employment/">RAMPS WITHOUT RIGHTS: THE LIMITS OF ACCOMMODATION IN GOVERNMENT EMPLOYMENT</a></h3>
+                        <p>Ahan Garg and Vitthala Agarwal, They are 2nd year law students at National Law University, Jodhpur</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/disability-behind-bars-rethinking-prison-administration-with-the-rpwd-act/">DISABILITY BEHIND BARS: RETHINKING PRISON ADMINISTRATION WITH THE RPwD ACT</a></h3>
+                        <p>Ayush Dewangan, LLM Student at Hidayatullah National Law University (HNLU), Raipur and Leesa Ueike, Practising Advocate at District Courts and High Court of Chhattisgarh</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/equal-access-to-justice-for-deaf-and-mute-people-still-a-long-way-to-go/">EQUAL ACCESS TO JUSTICE FOR DEAF AND MUTE PEOPLE: STILL A LONG WAY TO GO?</a></h3>
+                        <p>Uma Pareek, is a 4th year student at Dharmashastra National Law University, Jabalpur.</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/access-denied-why-mental-health-services-are-still-a-luxury-for-persons-with-disabilities-in-india/">ACCESS DENIED: WHY MENTAL HEALTH SERVICES ARE STILL A LUXURY FOR PERSONS WITH DISABILITIES IN INDIA</a></h3>
+                        <p>Sunidhi Khabya, She is a 3rd year law student at National University, Jodhpur</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/the-enabling-statute-in-india-concerning-mental-health-and-persons-with-disabilities/">THE ENABLING STATUTE IN INDIA CONCERNING MENTAL HEALTH AND PERSONS WITH DISABILITIES.</a></h3>
+                        <p>Noor Bansal and Tanishka Agarwal, They are 2nd year law students at National University, Jodhpur</p>
+                    </div>
+                    <div class="blog-card">
+                        <h3><a href="https://nlujcdse.in/the-poverty-disability-incarceration-pipeline-how-indias-criminal-justice-system-criminalizes-the-economic-exclusion-of-persons-with-disabilities/"><strong>THE POVERTY-DISABILITY-INCARCERATION PIPELINE: HOW INDIA'S CRIMINAL JUSTICE SYSTEM CRIMINALIZES THE ECONOMIC EXCLUSION OF PERSONS WITH DISABILITIES</strong></a></h3>
+                        <p>Pranay Rajesh Sonkusare, B.Sc. LL.B. (Hons.), Second Year student at West Bengal National University of Juridical Sciences, Kolkata</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="guidelines-section">
+            <div class="container">
+                <h2 class="section-title">SUBMISSION GUIDELINES</h2>
+                <p class="guidelines-intro">The Centre for Disability Studies and Empowerment invites original submissions for its blog, which seeks to foster critical discourse at the intersection of law and disability. Contributors are requested to adhere to the following guidelines to ensure uniformity, academic quality, and accessibility.</p>
+
+                <div class="guidelines-grid">
+                    <div>
+                        <h3>Scope and Subject Matter:</h3>
+                        <ul>
+                            <li>Submissions must relate to issues at the intersection of law and disability.</li>
+                            <li>Interdisciplinary approaches drawing from sociology, psychology, economics, public policy, technology, medicine, or other related fields are encouraged.</li>
+                            <li>The blog aims to promote nuanced, well-researched insights that advance conversations on disability rights and empowerment.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Word Limit and Authorship:</h3>
+                        <ul>
+                            <li>The main text should be between 1000&ndash;1500 words and A brief abstract of about 100 words must accompany the submission.</li>
+                            <li>Individual/ Co-authorship of up to two authors is permitted.</li>
+                            <li>Submissions must be original and shouldn't be sent for review elsewhere pending the completion of review process.</li>
+                            <li>The blog aims to promote nuanced, well-researched insights that advance conversations on disability rights and empowerment.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Citation and Referencing:</h3>
+                        <ul>
+                            <li>All sources must be hyperlinked within the text (avoid footnotes unless absolutely necessary).</li>
+                            <li>Similarity must not exceed 10%.</li>
+                            <li>Use of AI-generated content is strictly prohibited.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Formatting Guidelines:</h3>
+                        <ul>
+                            <li>Font: Times New Roman</li>
+                            <li>Font Size: 12</li>
+                            <li>Line Spacing: 1.5</li>
+                            <li>Alignment: Justified</li>
+                            <li>Headings: Bold and underlined</li>
+                            <li>File Name Format: CDSE_blogsubmission_Title of the blog</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="submission-process">
+                    <h3>Submission Procedure and Review Process:</h3>
+                    <ul>
+                        <li>Submissions should be emailed in .doc or .docx format to: <u>cdse.blog@nlujodhpur.ac.in</u></li>
+                        <li>Email subject line must read: &ldquo;CDSE Blog Submission &ndash; [Title of the Blog]&rdquo;</li>
+                        <li>Submissions will be accepted on a rolling basis.</li>
+                        <li>The Editorial Board will conduct a preliminary screening followed by a detailed review.</li>
+                        <li>The decision of the Editorial Board shall be final and binding.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-quote">
+        <blockquote>&ldquo;Navigating the intersection of emerging technologies, accessibility, and human rights to build a more equitable legal framework.&rdquo;</blockquote>
+        <p class="org-name">Centre For Disability Studies and Empowerment</p>
+        <p class="org-location">NLU, Jodhpur</p>
+    </footer>
+</body>
+</html>

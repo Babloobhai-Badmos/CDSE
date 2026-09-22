@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About the Centre - The Centre for Disability Studies and Empowerment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: #000;
+            color: #fff;
+            padding: 20px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+        
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .site-title a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+        
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .featured-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 0 auto 40px;
+            object-fit: cover;
+        }
+        
+        /* Content Sections */
+        .section {
+            padding: 60px 20px;
+            margin-bottom: 0;
+        }
+        
+        .section-accent {
+            background: #f5f5f5;
+        }
+        
+        .section-base {
+            background: #fff;
+        }
+        
+        .columns {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        .column-50 {
+            flex: 1 1 45%;
+        }
+        
+        .column-60 {
+            flex: 1 1 55%;
+        }
+        
+        .column-40 {
+            flex: 1 1 40%;
+        }
+        
+        .intro-text {
+            font-size: 1.25rem;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+        
+        .content-text {
+            margin-bottom: 20px;
+        }
+        
+        .content-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #555;
+        }
+        
+        /* Footer */
+        footer {
+            background: #f8f8f8;
+            padding: 40px 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section {
+            min-width: 200px;
+        }
+        
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .columns {
+                flex-direction: column;
+            }
+            
+            .column-50, .column-60, .column-40 {
+                flex: 1 1 100%;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <a href="https://nlujcdse.in/">
+                    <img src="https://nlujcdse.in/wp-content/uploads/2025/12/CDSE-Logo-no-BG.png" alt="The Centre for Disability Studies and Empowerment" class="logo">
+                </a>
+                <h1 class="site-title"><a href="https://nlujcdse.in">The Centre for Disability Studies and Empowerment</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="https://nlujcdse.in/__trashed/" aria-current="page">About the Centre</a></li>
+                    <li><a href="https://nlujcdse.in/our-projects/">Our Projects</a></li>
+                    <li><a href="https://nlujcdse.in/blogs-2/">Blogs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="page-title">About the Centre</h1>
+            <img src="https://nlujcdse.in/wp-content/uploads/2025/12/20251004_101351-2-edited.jpg" alt="" class="featured-image">
+        </div>
+
+        <section class="section section-accent">
+            <div class="columns">
+                <div class="column column-50">
+                    <p class="intro-text"><strong>The Centre for Disability Studies and Empowerment (CDSE)</strong> is a student-run, interdisciplinary initiative at National Law University, Jodhpur, dedicated to advancing disability rights, inclusive policy, and accessible design in India. Our work is grounded in the belief that disability justice is inseparable from social justice.</p>
+                    <a href="#" class="btn">Contact us</a>
+                </div>
+                <div class="column column-50">
+                    <img src="https://nlujcdse.in/wp-content/uploads/2025/12/WhatsApp-Image-2025-10-04-at-10.40.34-1024x768.jpeg" alt="" class="content-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-base">
+            <div class="columns">
+                <div class="column column-60">
+                    <p class="intro-text"><strong>CDSE brings together scholars, practitioners, disability advocates, and Millennium Fellowship-trained student leaders</strong> committed to promoting equal participation, legal empowerment, and socio-economic inclusion of persons with disabilities.</p>
+                    <div class="columns">
+                        <div class="column">
+                            <p class="content-text">The Centre engages in <strong>research, policy analysis, accessibility audits, legal literacy programmes, and community outreach</strong>, with a focus on disability law, reasonable accommodation, inclusive education, and rights-based approaches to assistive technologies.</p>
+                        </div>
+                        <div class="column">
+                            <p class="content-text">Our members collaborate with national and international organisations, contribute to public discourse, and work towards strengthening India's disability rights framework through evidence-based advocacy and intersectional scholarship.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column column-40">
+                    <img src="https://nlujcdse.in/wp-content/uploads/2025/12/20251004_101351-2-edited.jpg" alt="" class="content-image">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2 class="footer-title"><a href="https://nlujcdse.in" style="color: inherit; text-decoration: none;">The Centre for Disability Studies and Empowerment</a></h2>
+                <p>National Law University, Jodhpur</p>
+                <p class="footer-bottom">Proudly powered by <a href="https://wordpress.org">WordPress</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Pages</h3>
+                <ul class="footer-links">
+                    <li><a href="https://nlujcdse.in/__trashed/" aria-current="page">About the Centre</a></li>
+                    <li><a href="https://nlujcdse.in/our-projects/">Our Projects</a></li>
+                    <li><a href="https://nlujcdse.in/blogs-2/">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Social</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

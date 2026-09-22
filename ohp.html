@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects - The Centre for Disability Studies and Empowerment</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            color: #1e1e1e;
+            background: #fff;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header {
+            background: #000;
+            color: #fff;
+            padding: 15px 20px;
+        }
+        header .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-area img { height: 50px; width: auto; border-radius: 50%; }
+        .site-title { font-size: 1.2rem; font-weight: 700; }
+        .site-title a { color: #fff; text-decoration: none; }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav a { color: #fff; text-decoration: none; font-size: 0.95rem; }
+        nav a:hover { text-decoration: underline; }
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        main { padding: 0; }
+        .page-title {
+            text-align: center;
+            font-size: 2.2rem;
+            padding: 40px 20px 20px;
+        }
+        .section {
+            padding: 40px 20px;
+        }
+        .section-accent { background: #2563eb; color: #fff; }
+        .section-dark { background: #1e1e1e; color: #fff; }
+        .section-light { background: #f8f8f8; }
+        .section-muted { background: #f0f0f0; }
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .section p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        .projects-list {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+        .projects-list li {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .content-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .cover-section {
+            position: relative;
+            min-height: 60vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .two-col {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .two-col .col { flex: 1; }
+        .two-col .col-wide { flex: 1.5; }
+        .portrait-img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+        footer {
+            background: #111;
+            color: #ccc;
+            padding: 40px 20px;
+        }
+        footer .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        footer a { color: #ccc; text-decoration: none; }
+        footer a:hover { color: #fff; }
+        .footer-heading {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #999;
+        }
+        .search-form {
+            display: flex;
+            gap: 8px;
+        }
+        .search-form input[type="search"] {
+            padding: 8px 12px;
+            border: 1px solid #555;
+            background: #222;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            flex: 1;
+            min-width: 200px;
+        }
+        .search-form button {
+            padding: 8px 16px;
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-form button:hover { background: #444; }
+        .social-links { list-style: none; }
+        .social-links li { margin-bottom: 5px; }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .footer-bottom .site-name { font-weight: 600; color: #999; font-size: 0.9rem; }
+        .footer-bottom .credits { font-size: 0.85rem; color: #666; }
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding-top: 10px;
+            }
+            nav.open ul { display: flex; }
+            .two-col { flex-direction: column; }
+            .cover-section { background-attachment: scroll; min-height: 40vh; }
+            header .header-inner { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="logo-area">
+                <a href="https://nlujcdse.in/">
+                    <img src="https://nlujcdse.in/wp-content/uploads/2025/12/CDSE-Logo-no-BG.png" alt="The Centre for Disability Studies and Empowerment">
+                </a>
+                <h1 class="site-title"><a href="https://nlujcdse.in">The Centre for Disability Studies and Empowerment</a></h1>
+            </div>
+            <button class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Open menu">&#9776;</button>
+            <nav aria-label="Main menu">
+                <ul>
+                    <li><a href="https://nlujcdse.in/__trashed/">About the Centre</a></li>
+                    <li><a href="https://nlujcdse.in/our-projects/" aria-current="page">Our Projects</a></li>
+                    <li><a href="https://nlujcdse.in/blogs-2/">Blogs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title container">Our Projects</h1>
+
+        <section class="section section-accent">
+            <div class="container">
+                <p style="font-size:1.3rem; line-height:1.2;">The following is a list of projects:</p>
+                <ol class="projects-list">
+                    <li>UN Millennium Fellowship &ndash; Saathi Rights and Reach.</li>
+                    <li>Accessibility Lab in partnership with Luthra Foundation.</li>
+                    <li>Golf Cart Procurement.</li>
+                    <li>Installation of Ramps.</li>
+                    <li>Project Ability Empowerment.</li>
+                    <li>Website Compliance and Maintenance.</li>
+                </ol>
+                <img class="content-image" src="https://nlujcdse.in/wp-content/uploads/2025/12/IMG_1349-1-1024x768.jpg" alt="CDSE Projects" width="1024" height="768">
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:10px; text-align:center;">Rajiv K. Luthra NLUJ Accessibility Lab &ndash; 2025</h2>
+                <p>NLU Jodhpur has taken an important step toward building a more inclusive campus by signing an MoU with the Luthra Foundation to establish the Rajiv K. Luthra NLUJ Accessibility Lab. The initiative is designed to support students with disabilities by creating a dedicated space that focuses on accessible learning, assistive technologies, and equal academic opportunity.</p>
+                <p>The lab will house a wide range of tools, including screen readers, magnifiers, accessible digital repositories, and adaptive workstations. It is designed to support a broad spectrum of disabilities from blindness and visual impairments to locomotor disabilities and several others ensuring that every student can access academic resources with dignity and ease. Named in honour of the late Rajiv K. Luthra, the lab reflects his belief in equal opportunity and continues to inspire efforts toward accessibility in legal education.</p>
+                <p>As part of the collaboration, two students with disabilities from NLUJ will receive internship opportunities each year at Luthra &amp; Luthra Law Offices. This addition ensures that accessibility extends beyond the classroom, offering meaningful professional exposure and stronger representation for persons with disabilities in the legal field.</p>
+                <p>The Accessibility Lab is set to be fully functional before February 2026 and marks a significant step in NLUJ's journey toward a more supportive and barrier-free academic environment. It reflects the university's commitment to dignity, independence, and equal access for every student.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:10px;">Introduction of Golf Cart Mobility Service &ndash; October, 2025</h2>
+                <p>In October 2025, the Centre for Disability Studies &amp; Empowerment launched a new golf-cart mobility service to enhance campus accessibility for students with disabilities. Any student who requires assisted movement can request the golf cart through the main gate, ensuring dignified, flexible and quick transportation across the large campus. This initiative aims to remove mobility barriers, reduce daily strain and promote independent navigation for person with disability. The service represents CDSE's continuing efforts to make NLU Jodhpur more inclusive and accessible.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:10px;">Infrastructure Accessibility Audit &amp; Proposal &ndash; April 2025</h2>
+                <p>On 17 April 2025, the Centre for Disability Studies &amp; Empowerment (CDSE) conducted a detailed accessibility audit across the Halls of Residence (HOR) and Halls of Learning (HOL), focusing particularly on ramp safety and compliant mobility pathways. The assessment highlighted several urgent issues, including missing ramps, unsafe and overly steep gradients, lack of railings, slippery surfaces, and improperly constructed access points, some of which had already caused injuries to students with disabilities.</p>
+                <p>The audit provided a comprehensive ramp-specific analysis, identifying locations where ramps were either absent or required immediate redesign. CDSE recommended the construction of properly graded ramps, installation of double railings, and use of anti-slip surfacing to ensure safe and independent movement.</p>
+                <p>Following these observations, the university immediately constructed several new PWD-friendly ramps across the campus, addressing the most critical access points first. Additional ramps and structural improvements are already underway as part of an ongoing effort to make all major pathways fully accessible.</p>
+                <p>The initiative aims to strengthen safe mobility and guarantee dignity, independence, and equal access for every student with disabilities at NLU Jodhpur.</p>
+            </div>
+        </section>
+
+        <section class="cover-section" style="background-image: url('https://nlujcdse.in/wp-content/uploads/2025/12/WhatsApp-Image-2025-10-04-at-10.40.34-1024x768.jpeg');">
+        </section>
+
+        <section class="section section-muted">
+            <div class="container" style="max-width: 900px; text-align: center;">
+                <p style="font-size: 1.15rem; font-weight: 500; line-height: 1.3;">UN Millennium Fellowship &ndash; Sensitization of Admin Staff, Sensitization of Caretakers and Support Staff, also outside the campus boundaries, Helped students in getting UDID cards, Sensitized disabled students about government schemes which are aimed at them.</p>
+            </div>
+        </section>
+
+        <section class="section section-dark">
+            <div class="container">
+                <div class="two-col">
+                    <div class="col">
+                        <img class="portrait-img" src="https://nlujcdse.in/wp-content/uploads/2025/12/20251004_101351-2-1024x768.jpg" alt="Sensitization Session" width="1024" height="768">
+                    </div>
+                    <div class="col">
+                        <h2 style="font-size: 1.2rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px;">Sensitization of Admin and Support Staff &ndash; September, 2025</h2>
+                        <p style="text-align: center; font-weight: 600;">Or</p>
+                        <h2 style="font-size: 1.2rem; font-weight: 700; line-height: 1.2; margin-bottom: 20px;">Saathi Rights and Reach</h2>
+                        <p>On 6 September 2025, the Centre for Disability Studies &amp; Empowerment (CDSE) ran an interactive sensitization session for the administrative staff of NLU Jodhpur. Facilitators used videos, real-life scenarios, and personal stories. This was in order to highlight practical do's and don'ts when interacting with students with disabilities, focusing on <em>empathy</em>, <em>accessibility</em>, and <em>inclusive campus procedures</em>. The workshop built staff awareness, responsibility, and hands-on skills to make daily campus services more accessible and supportive.</p>
+                        <img class="portrait-img" src="https://nlujcdse.in/wp-content/uploads/2025/12/IMG_5113-1024x768.jpg" alt="Sensitization Workshop" width="1024" height="768">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <p class="footer-heading">Search</p>
+                <form role="search" method="get" action="https://nlujcdse.in/" class="search-form">
+                    <input type="search" name="s" placeholder="" aria-label="Search">
+                    <button type="submit" aria-label="Search">&#128269;</button>
+                </form>
+            </div>
+            <div>
+                <p class="footer-heading">Social</p>
+                <ul class="social-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <span class="site-name"><a href="https://nlujcdse.in">The Centre for Disability Studies and Empowerment</a></span>
+            <span class="credits">Proudly powered by <a href="https://wordpress.org">WordPress</a></span>
+        </div>
+    </footer>
+</body>
+</html>
