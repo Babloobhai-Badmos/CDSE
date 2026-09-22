@@ -12,6 +12,30 @@
     });
   }
 
+  /* ---------- "More" overflow nav dropdown ---------- */
+  var moreBtn = document.querySelector(".nav-more-btn");
+  var moreMenu = document.querySelector(".nav-more-menu");
+  if (moreBtn && moreMenu) {
+    moreBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      var open = moreMenu.classList.toggle("open");
+      moreBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.addEventListener("click", function (event) {
+      if (!moreMenu.classList.contains("open")) return;
+      if (moreMenu.contains(event.target) || moreBtn.contains(event.target)) return;
+      moreMenu.classList.remove("open");
+      moreBtn.setAttribute("aria-expanded", "false");
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && moreMenu.classList.contains("open")) {
+        moreMenu.classList.remove("open");
+        moreBtn.setAttribute("aria-expanded", "false");
+        moreBtn.focus();
+      }
+    });
+  }
+
   /* ---------- Accessibility toolbar: text size + contrast ---------- */
   var root = document.documentElement;
   var STORAGE_SIZE = "cdse-font-scale";

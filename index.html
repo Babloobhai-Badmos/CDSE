@@ -7,22 +7,12 @@
 <meta name="description" content="The Centre for Disability Studies and Empowerment (CDSE), NLU Jodhpur, is an academic and research-driven centre committed to advancing disability justice, inclusive policy development, and empowerment-based scholarship.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="https://nlujcdse.in/wp-content/uploads/2025/11/IMG_20251111_100542-150x150.jpg" sizes="32x32">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-
-<div class="a11y-toolbar" role="region" aria-label="Accessibility settings">
-  <div class="container">
-    <span class="label">Accessibility:</span>
-    <button type="button" id="font-decrease" aria-label="Decrease text size">A−</button>
-    <button type="button" id="font-reset" aria-label="Reset text size">A</button>
-    <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
-    <button type="button" id="contrast-toggle" aria-pressed="false">High contrast</button>
-  </div>
-</div>
 
 <header class="header">
   <div class="header-inner">
@@ -42,9 +32,16 @@
         <li><a href="about.html">About the Centre</a></li>
         <li><a href="projects.html">Our Projects</a></li>
         <li><a href="blog.html">Blog</a></li>
-        <li><a href="get-involved.html">Get Involved</a></li>
-        <li><a href="report-issue.html">Report an Issue</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-more">
+          <button type="button" class="nav-more-btn" aria-haspopup="true" aria-expanded="false">
+            More <span class="chevron" aria-hidden="true">▾</span>
+          </button>
+          <ul class="nav-more-menu">
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="report-issue.html">Report an Issue</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </div>
@@ -70,70 +67,6 @@
     <div class="container">
       <blockquote>&ldquo;There is no greater disability in society than the inability to see a person as more.&rdquo;</blockquote>
       <p class="quote-author">Robert M. Hensel</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">What we do</p>
-      <h2>Research, advocacy, and accessible design — together</h2>
-      <p class="section-intro">CDSE brings together scholars, practitioners, disability advocates, and Millennium Fellowship-trained student leaders committed to promoting equal participation, legal empowerment, and socio-economic inclusion of persons with disabilities.</p>
-
-      <div class="grid grid-3" style="margin-top:2rem;">
-        <div class="card">
-          <span class="tag">Research &amp; Policy</span>
-          <h3>Research &amp; Policy Analysis</h3>
-          <p>Studying disability law, reasonable accommodation, and inclusive policy design in the Indian context.</p>
-        </div>
-        <div class="card">
-          <span class="tag">Campus</span>
-          <h3>Accessibility Audits</h3>
-          <p>Assessing campus infrastructure and recommending fixes — ramps, railings, signage, and more.</p>
-        </div>
-        <div class="card">
-          <span class="tag">Outreach</span>
-          <h3>Legal Literacy &amp; Outreach</h3>
-          <p>Running legal literacy programmes and community outreach to advance equal participation.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <p class="eyebrow">Featured project</p>
-      <h2>Rajiv K. Luthra – NLUJ Accessibility Lab</h2>
-      <p class="section-intro">The first dedicated accessibility facility of its kind at NLU Jodhpur, established through an MoU with the Rajiv K. Luthra Foundation and inaugurated by students with special abilities.</p>
-      <a class="btn btn-secondary" href="projects.html">Explore Our Projects</a>
-      <div class="stat-row">
-        <div class="stat"><span class="num">2025</span><span class="label">MoU signed with Luthra Foundation</span></div>
-        <div class="stat"><span class="num">2026</span><span class="label">Accessibility Lab inaugurated</span></div>
-        <div class="stat"><span class="num">2</span><span class="label">Annual internships at Luthra &amp; Luthra Law Offices</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">Get involved</p>
-      <h2>There are several ways to work with CDSE</h2>
-      <div class="grid grid-3" style="margin-top:1.5rem;">
-        <div class="card">
-          <h3>Join or Volunteer</h3>
-          <p>Apply to join the Centre or volunteer for our events and projects.</p>
-          <a href="get-involved.html">Apply now →</a>
-        </div>
-        <div class="card">
-          <h3>Write for Our Blog</h3>
-          <p>Submit a blog on disability rights, accessibility, or inclusive policy — rolling submissions welcome.</p>
-          <a href="blog.html#submit">Submission guidelines →</a>
-        </div>
-        <div class="card">
-          <h3>Report an Accessibility Issue</h3>
-          <p>Flag a campus accessibility issue for our audit team.</p>
-          <a href="report-issue.html">Report an issue →</a>
-        </div>
-      </div>
     </div>
   </section>
 
