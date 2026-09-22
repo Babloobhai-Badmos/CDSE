@@ -14,16 +14,6 @@
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<div class="a11y-toolbar" role="region" aria-label="Accessibility settings">
-  <div class="container">
-    <span class="label">Accessibility:</span>
-    <button type="button" id="font-decrease" aria-label="Decrease text size">A−</button>
-    <button type="button" id="font-reset" aria-label="Reset text size">A</button>
-    <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
-    <button type="button" id="contrast-toggle" aria-pressed="false">High contrast</button>
-  </div>
-</div>
-
 <header class="header">
   <div class="header-inner">
     <div class="header-brand">
@@ -45,6 +35,15 @@
             More <span class="chevron" aria-hidden="true">▾</span>
           </button>
           <ul class="nav-more-menu">
+            <li class="nav-more-a11y">
+              <span class="nav-more-label">Accessibility</span>
+              <div class="a11y-controls">
+                <button type="button" id="font-decrease" aria-label="Decrease text size">A−</button>
+                <button type="button" id="font-reset" aria-label="Reset text size">A</button>
+                <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
+                <button type="button" id="contrast-toggle" aria-pressed="false">High contrast</button>
+              </div>
+            </li>
             <li><a href="get-involved.html" aria-current="page">Get Involved</a></li>
             <li><a href="report-issue.html">Report an Issue</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -85,24 +84,33 @@
       <p class="eyebrow">Apply</p>
       <h2>Apply to Join CDSE</h2>
 
-      <div class="setup-note">
-        <strong>Setup needed:</strong> this embeds a Google Form. Create a form with fields for
-        Full name, Email, Phone (optional), Year of study / role, Interest
-        (Full membership / Event-based volunteering / Either), Areas of interest, and
-        "Why do you want to join CDSE?". Then replace <code>FORM_ID_MEMBERSHIP</code> below
-        with the real form ID. Member records can later be pushed into Supabase's
-        <code>members</code> table via the Apps Script automation — see
-        <code>docs/google-forms-setup.md</code>.
-      </div>
+      <div class="form-with-side-image" style="margin-top:1.5rem;">
+        <figure class="side-image">
+          <img src="https://nlujcdse.in/wp-content/uploads/2025/12/20251004_101351-2-1024x768.jpg" alt="CDSE staff sensitization session">
+          <figcaption>CDSE members leading a staff sensitization session, September 2025</figcaption>
+        </figure>
 
-      <div class="form-card">
-        <iframe class="gform-embed" title="Membership and volunteering application"
-          src="https://docs.google.com/forms/d/e/FORM_ID_MEMBERSHIP/viewform?embedded=true"
-          loading="lazy">Loading…</iframe>
-        <p class="gform-fallback">
-          Form not loading? <a href="https://docs.google.com/forms/d/e/FORM_ID_MEMBERSHIP/viewform" target="_blank" rel="noopener">Open it in a new tab</a>,
-          or email us directly at <a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a>.
-        </p>
+        <div>
+          <div class="setup-note">
+            <strong>Setup needed:</strong> this embeds a Google Form. Create a form with fields for
+            Full name, Email, Phone (optional), Year of study / role, Interest
+            (Full membership / Event-based volunteering / Either), Areas of interest, and
+            "Why do you want to join CDSE?". Then replace <code>FORM_ID_MEMBERSHIP</code> below
+            with the real form ID. Member records can later be pushed into Supabase's
+            <code>members</code> table via the Apps Script automation — see
+            <code>docs/google-forms-setup.md</code>.
+          </div>
+
+          <div class="form-card">
+            <iframe class="gform-embed" title="Membership and volunteering application"
+              src="https://docs.google.com/forms/d/e/FORM_ID_MEMBERSHIP/viewform?embedded=true"
+              loading="lazy">Loading…</iframe>
+            <p class="gform-fallback">
+              Form not loading? <a href="https://docs.google.com/forms/d/e/FORM_ID_MEMBERSHIP/viewform" target="_blank" rel="noopener">Open it in a new tab</a>,
+              or email us directly at <a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a>.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

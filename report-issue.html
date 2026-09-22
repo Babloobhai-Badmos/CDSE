@@ -14,16 +14,6 @@
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<div class="a11y-toolbar" role="region" aria-label="Accessibility settings">
-  <div class="container">
-    <span class="label">Accessibility:</span>
-    <button type="button" id="font-decrease" aria-label="Decrease text size">A−</button>
-    <button type="button" id="font-reset" aria-label="Reset text size">A</button>
-    <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
-    <button type="button" id="contrast-toggle" aria-pressed="false">High contrast</button>
-  </div>
-</div>
-
 <header class="header">
   <div class="header-inner">
     <div class="header-brand">
@@ -45,6 +35,15 @@
             More <span class="chevron" aria-hidden="true">▾</span>
           </button>
           <ul class="nav-more-menu">
+            <li class="nav-more-a11y">
+              <span class="nav-more-label">Accessibility</span>
+              <div class="a11y-controls">
+                <button type="button" id="font-decrease" aria-label="Decrease text size">A−</button>
+                <button type="button" id="font-reset" aria-label="Reset text size">A</button>
+                <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
+                <button type="button" id="contrast-toggle" aria-pressed="false">High contrast</button>
+              </div>
+            </li>
             <li><a href="get-involved.html">Get Involved</a></li>
             <li><a href="report-issue.html" aria-current="page">Report an Issue</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -67,24 +66,33 @@
 
   <section class="section">
     <div class="container">
-      <div class="setup-note">
-        <strong>Setup needed:</strong> this embeds a Google Form. Create a form with fields for
-        Name (optional), Email (optional), Type of issue (Ramp / Railing / Surface / Signage /
-        Restroom / Digital resource / Golf-cart service / Other), Location on campus, Description,
-        and Urgency (Low / Medium / High). Then replace <code>FORM_ID_ACCESSIBILITY_REPORT</code>
-        below with the real form ID. Apps Script can auto-notify the audit team by email the moment
-        a "High" urgency report comes in — see <code>docs/google-forms-setup.md</code>.
-      </div>
+      <div class="form-with-side-image">
+        <figure class="side-image">
+          <img src="https://nlujcdse.in/wp-content/uploads/2025/12/IMG_1349-1-1024x768.jpg" alt="Campus accessibility project work at NLU Jodhpur">
+          <figcaption>CDSE's April 2025 audit led to new PWD-friendly ramps across campus</figcaption>
+        </figure>
 
-      <div class="form-card">
-        <iframe class="gform-embed" title="Accessibility issue report form"
-          src="https://docs.google.com/forms/d/e/FORM_ID_ACCESSIBILITY_REPORT/viewform?embedded=true"
-          loading="lazy">Loading…</iframe>
-        <p class="gform-fallback">
-          Form not loading? <a href="https://docs.google.com/forms/d/e/FORM_ID_ACCESSIBILITY_REPORT/viewform" target="_blank" rel="noopener">Open it in a new tab</a>,
-          or email us directly at <a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a>.
-        </p>
-        <p class="gform-fallback">For urgent safety concerns, please also contact campus security directly in addition to filing this report.</p>
+        <div>
+          <div class="setup-note">
+            <strong>Setup needed:</strong> this embeds a Google Form. Create a form with fields for
+            Name (optional), Email (optional), Type of issue (Ramp / Railing / Surface / Signage /
+            Restroom / Digital resource / Golf-cart service / Other), Location on campus, Description,
+            and Urgency (Low / Medium / High). Then replace <code>FORM_ID_ACCESSIBILITY_REPORT</code>
+            below with the real form ID. Apps Script can auto-notify the audit team by email the moment
+            a "High" urgency report comes in — see <code>docs/google-forms-setup.md</code>.
+          </div>
+
+          <div class="form-card">
+            <iframe class="gform-embed" title="Accessibility issue report form"
+              src="https://docs.google.com/forms/d/e/FORM_ID_ACCESSIBILITY_REPORT/viewform?embedded=true"
+              loading="lazy">Loading…</iframe>
+            <p class="gform-fallback">
+              Form not loading? <a href="https://docs.google.com/forms/d/e/FORM_ID_ACCESSIBILITY_REPORT/viewform" target="_blank" rel="noopener">Open it in a new tab</a>,
+              or email us directly at <a href="mailto:cdse@nlujodhpur.ac.in">cdse@nlujodhpur.ac.in</a>.
+            </p>
+            <p class="gform-fallback">For urgent safety concerns, please also contact campus security directly in addition to filing this report.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

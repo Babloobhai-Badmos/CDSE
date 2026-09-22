@@ -14,16 +14,6 @@
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<div class="a11y-toolbar" role="region" aria-label="Accessibility settings">
-  <div class="container">
-    <span class="label">Accessibility:</span>
-    <button type="button" id="font-decrease" aria-label="Decrease text size">A−</button>
-    <button type="button" id="font-reset" aria-label="Reset text size">A</button>
-    <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
-    <button type="button" id="contrast-toggle" aria-pressed="false">High contrast</button>
-  </div>
-</div>
-
 <header class="header">
   <div class="header-inner">
     <div class="header-brand">
@@ -45,6 +35,15 @@
             More <span class="chevron" aria-hidden="true">▾</span>
           </button>
           <ul class="nav-more-menu">
+            <li class="nav-more-a11y">
+              <span class="nav-more-label">Accessibility</span>
+              <div class="a11y-controls">
+                <button type="button" id="font-decrease" aria-label="Decrease text size">A−</button>
+                <button type="button" id="font-reset" aria-label="Reset text size">A</button>
+                <button type="button" id="font-increase" aria-label="Increase text size">A+</button>
+                <button type="button" id="contrast-toggle" aria-pressed="false">High contrast</button>
+              </div>
+            </li>
             <li><a href="get-involved.html">Get Involved</a></li>
             <li><a href="report-issue.html">Report an Issue</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -70,6 +69,13 @@
       <p class="eyebrow">Archives</p>
       <div id="featured-post" aria-live="polite"></div>
       <div class="post-grid" id="post-grid"></div>
+    </div>
+  </section>
+
+  <section class="quote-section quote-section--compact">
+    <div class="container">
+      <blockquote>&ldquo;Navigating the intersection of emerging technologies, accessibility, and human rights to build a more equitable legal framework.&rdquo;</blockquote>
+      <p class="quote-author">Centre for Disability Studies and Empowerment, NLU Jodhpur</p>
     </div>
   </section>
 
