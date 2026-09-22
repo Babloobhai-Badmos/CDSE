@@ -124,6 +124,13 @@ img { max-width: 100%; height: auto; display: block; }
   position: sticky;
   top: 0;
   z-index: 500;
+  transition: background-color 0.25s ease, backdrop-filter 0.25s ease, box-shadow 0.25s ease;
+}
+.header.is-scrolled {
+  background-color: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 .header-inner {
   display: flex;

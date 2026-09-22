@@ -51,12 +51,27 @@ tab" link right below it. Each appears once, in:
 - Urgency (multiple choice: Low / Medium / High)
 
 ### Blog Submission (`blog.html`)
+
+This one is an *alternative* to CDSE's real, currently-working process:
+emailing a `.doc`/`.docx` manuscript to **cdse.blog@nlujodhpur.ac.in** with
+subject line `CDSE Blog Submission – [Title of the Blog]` (see the
+Submission Guidelines on `blog.html`, sourced verbatim from
+`reference/bhb-blog-archive.html`). The blog.html page leads with that
+email flow (a pre-filled `mailto:` button) and offers this form underneath
+as a convenience. Fields:
+
 - Blog title (short answer, required)
 - Author name(s) (short answer, required — note "up to two, comma-separated")
 - Email (short answer, required, validated)
 - Abstract (~100 words) (paragraph, required)
-- Full blog text (paragraph, required — note 1000–1500 words, sources hyperlinked in text)
+- Manuscript file (**file upload** question, required — .doc/.docx, named
+  `CDSE_blogsubmission_Title of the blog` per the real formatting rules:
+  Times New Roman 12pt, 1.5 line spacing, justified, bold+underlined headings)
 - Declaration checkbox (required): "I confirm this submission is original, not under review elsewhere, complies with the <10% similarity requirement, and contains no AI-generated content."
+
+Route responses (or forward the acknowledgement) to
+**cdse.blog@nlujodhpur.ac.in**, not the general `cdse@nlujodhpur.ac.in`
+inbox used by the other three forms.
 
 ## 2. Turn on response notifications (baseline, no code)
 

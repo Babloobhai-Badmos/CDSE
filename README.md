@@ -6,14 +6,15 @@ Theme matches the real `nlujcdse.in` brand (see `reference/Untitled-1.html`,
 the reference page this was rebuilt from): black header, cream `#f7f4ef`
 background, **Cardo** serif for headings and the italic hero line, **Inter**
 for body text, real CDSE logo/hero imagery, and a black full-width pull-quote
-band.
+band. The header goes translucent with a blur once you scroll, and the
+mobile/overflow menu uses a plain three-bar icon.
 
 ## Pages
 
-- `index.html` — Home
-- `about.html` — About the Centre, mission, leadership, milestones
-- `projects.html` — Rajiv K. Luthra – NLUJ Accessibility Lab, golf-cart mobility service, campus accessibility audits
-- `blog.html` — Medium-style blog listing (featured post + card grid, tag filters) + Call for Blogs + submission form
+- `index.html` — Home (hero → pull-quote → footer only, per the reference)
+- `about.html` — About the Centre, mission, areas of work
+- `projects.html` — All 6 listed projects: Accessibility Lab, golf-cart service, the April 2025 infrastructure audit, UN Millennium Fellowship (Saathi Rights and Reach), and the September 2025 staff sensitization session
+- `blog.html` — Medium-style archive (featured post + card grid) of the real 16-post archive, plus the real Submission Guidelines
 - `get-involved.html` — Membership / volunteer application form
 - `report-issue.html` — Campus accessibility issue-report form
 - `contact.html` — Contact / feedback form
@@ -21,20 +22,26 @@ band.
 ## Architecture
 
 - **Blog**: `js/posts.js` exposes `CDSEPosts.getPosts()`, currently returning
-  a small static array of real, sourced Centre updates. `js/blog-render.js`
-  renders it Medium-style (large featured post + responsive card grid + tag
-  filter pills) into `blog.html`. This is written to be a one-function swap
-  to Supabase later — see the comment block at the top of `js/posts.js`.
-- **Forms**: contact/feedback, membership/volunteer, accessibility issue
-  report, and blog submission are each a Google Form embedded as an
-  `<iframe>`, styled to sit inside the page's card layout, with a
-  "open in a new tab" fallback link. None are wired to real forms yet —
-  each page has a `FORM_ID_*` placeholder and a `.setup-note` explaining
-  what to create. **See `docs/google-forms-setup.md`** for the exact field
-  list per form and how to get each embed URL.
+  the real 16-post archive from `reference/bhb-blog-archive.html` (title +
+  author byline for each — the archive page doesn't publish per-post dates,
+  categories, or excerpts, so none are fabricated; each card links out to
+  the full post on nlujcdse.in). `js/blog-render.js` renders it Medium-style
+  (large featured post + responsive card grid) into `blog.html`. Written for
+  a one-function swap to Supabase later — see the comment block at the top
+  of `js/posts.js`.
+- **Forms**: contact/feedback, membership/volunteer, and accessibility issue
+  report are each a Google Form embedded as an `<iframe>`. Blog submission
+  leads with CDSE's real, currently-working process — a `.doc`/`.docx`
+  emailed to `cdse.blog@nlujodhpur.ac.in` with a specific subject line and
+  formatting (Times New Roman 12pt, 1.5 spacing, justified) — with a Google
+  Form offered underneath as a convenience alternative. None of the forms
+  are wired to real Google Forms yet — each page has a `FORM_ID_*`
+  placeholder and a `.setup-note` explaining what to create. **See
+  `docs/google-forms-setup.md`** for the exact field list per form and how
+  to get each embed URL.
 - **Automation**: `docs/apps-script-template.gs` is a ready-to-paste Google
   Apps Script that, once attached to a form's response Sheet, emails an
-  acknowledgement to the submitter, notifies `cdse@nlujodhpur.ac.in` (with
+  acknowledgement to the submitter, notifies the right inbox (with
   urgency-based subject-line flagging for accessibility reports), and has a
   stubbed-out `pushToSupabase_()` for mirroring responses into Supabase once
   that's connected.
@@ -50,7 +57,7 @@ band.
 Built to WCAG 2.1 AA in spirit:
 - Skip-to-content link, semantic landmarks (`header`/`nav`/`main`/`footer`), `aria-current` on active nav links
 - Keyboard-focusable controls with a visible focus ring
-- On-page toolbar for text size (A−/A/A+) and a high-contrast theme, both persisted via `localStorage`
+- On-page toolbar for text size (A−/A/A+) and a high-contrast theme on interior pages, persisted via `localStorage` (removed from the home page per request, to match the reference exactly)
 - Labelled form fields (for the parts we control — Google's own form UI handles labelling inside the embed)
 - Colour palette checked for 4.5:1+ contrast on body text
 
@@ -59,12 +66,18 @@ Please re-verify with a screen reader (NVDA/VoiceOver) and an automated tool (ax
 ## Content source note
 
 The task asked to port over all content from the live site at nlujcdse.in.
-This session's network policy blocked direct access to that domain
-(`EGRESS_BLOCKED`), so most page copy was reconstructed from web-search
-snippets and news coverage (SCC Online, LiveLaw, LinkedIn posts, NLUJ's own
-news page). The homepage hero, quote, logo, favicon, nav labels, footer, and
-color/font theme now come directly from `reference/Untitled-1.html`, a real
-snapshot of the site's home page the user provided. **Before launch,
-cross-check every page against the live site** for: exact team member list,
-precise addresses, additional projects/events not surfaced by search, and
-past blog posts.
+This session's network policy blocks direct access to that domain
+(`EGRESS_BLOCKED`), so the site is built from reference HTML snapshots the
+user provided instead of a live scrape:
+
+- `reference/Untitled-1.html` — the real home page (theme, hero, quote, logo, footer, nav labels)
+- `reference/hhb-about-page.html` — the real About the Centre page
+- `reference/ohp-our-projects.html` — the real Our Projects page (all 6 projects)
+- `reference/bhb-blog-archive.html` — the real Blog archive (16 posts) and Submission Guidelines
+
+Anything not covered by those four snapshots (e.g. the exact team roster
+beyond Dr. Rashmi Mathur, or events after these snapshots were taken) is
+still reconstructed from web-search snippets and news coverage (SCC Online,
+LiveLaw, NLUJ's own news page) rather than a direct scrape. **Before launch,
+cross-check every page against the live site** for anything published after
+these snapshots.

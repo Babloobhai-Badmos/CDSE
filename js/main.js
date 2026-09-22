@@ -2,6 +2,16 @@
 (function () {
   "use strict";
 
+  /* ---------- Header goes translucent on scroll ---------- */
+  var header = document.querySelector(".header");
+  if (header) {
+    var updateHeaderScrolled = function () {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+    updateHeaderScrolled();
+    window.addEventListener("scroll", updateHeaderScrolled, { passive: true });
+  }
+
   /* ---------- Mobile nav toggle ---------- */
   var navToggle = document.querySelector(".mobile-menu-btn");
   var nav = document.querySelector(".header-nav");
