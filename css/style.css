@@ -315,65 +315,20 @@ img { max-width: 100%; height: auto; display: block; }
 .quote-section--compact { padding: var(--spacing-lg) var(--spacing-lg); }
 .quote-section--compact blockquote { font-size: clamp(1.2rem, 1.2rem + 0.6vw, 1.6rem); }
 
-/* ---- Full-bleed fixed-background cover (editorial break between sections) ---- */
+/* ---- Full-bleed fixed-background cover (editorial break between sections).
+   Plain full-screen image, no overlay, no pinning trick: it's just a very
+   tall section with a fixed-attachment background, so it fills the screen
+   as you scroll through it, then scrolls away normally like any other
+   section once you've passed it — the classic parallax-cover look. ---- */
 .cover-section {
-  position: relative;
-  min-height: 46vh;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  display: flex;
-  align-items: flex-end;
-}
-.cover-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0));
-}
-.cover-section .cover-caption {
-  position: relative;
-  z-index: 1;
-  color: #fff;
-  padding: 2rem var(--spacing-lg);
-  font-family: 'Cardo', serif;
-  font-style: italic;
-  font-size: clamp(1.1rem, 1.1rem + 0.5vw, 1.4rem);
 }
 @media (max-width: 768px) {
-  .cover-section { background-attachment: scroll; min-height: 32vh; }
-}
-
-/* ---- Scroll reveal: image pins as a full-screen backdrop, then the text
-   panel scrolls up over it and covers it — image "goes behind" the text. ---- */
-.scroll-reveal { position: relative; }
-.scroll-reveal-media {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-}
-.scroll-reveal-media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.25);
-}
-.scroll-reveal-copy {
-  position: relative;
-  z-index: 1;
-  margin-top: -45vh;
-  background: var(--color-bg);
-  border-radius: 32px 32px 0 0;
-  padding: 3.5rem var(--spacing-lg) 4rem;
-  box-shadow: 0 -30px 60px -20px rgba(0,0,0,0.35);
-}
-.scroll-reveal-copy .container { max-width: 760px; }
-@media (max-width: 768px) {
-  .scroll-reveal-media { height: 70vh; }
-  .scroll-reveal-copy { margin-top: -30vh; padding: 2.5rem var(--spacing-lg) 3rem; }
+  /* background-attachment: fixed is unreliable on mobile browsers */
+  .cover-section { background-attachment: scroll; min-height: 70vh; }
 }
 
 /* ---- Flanking layout: image / text / image (or reversed) ---- */
