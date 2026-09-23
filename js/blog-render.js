@@ -1,8 +1,9 @@
 // Renders the three-tier blog listing on blog.html using js/posts.js:
-//   1. Hero — the single most recent post, big image, big fonts
+//   1. Hero — the single most recent post, image left, big fonts right
 //   2. Latest — the next three posts, as cards
 //   3. Archives — everything else, as a compact text grid (asterisk mark,
 //      underlined small-caps title, byline)
+// Every title (hero, latest, archives) is itself the link to the full post.
 (function () {
   "use strict";
 
@@ -12,28 +13,28 @@
     return div.innerHTML;
   }
 
-  function readMore(post) {
+  function titleLink(post) {
     return (
-      '<a class="post-link" href="' + escapeHTML(post.external_url) +
-      '" target="_blank" rel="noopener">Read full post →</a>'
+      '<a href="' + escapeHTML(post.external_url) + '" target="_blank" rel="noopener">' +
+      escapeHTML(post.title) + "</a>"
     );
   }
 
   function renderHero(post, container) {
     container.innerHTML =
       '<div class="blog-hero-media" aria-hidden="true">CDSE Blog</div>' +
+      "<div>" +
       '<span class="tag">Latest</span>' +
-      "<h2>" + escapeHTML(post.title) + "</h2>" +
+      "<h2>" + titleLink(post) + "</h2>" +
       '<p class="post-meta">' + escapeHTML(post.author) + "</p>" +
-      '<p style="margin-top:1.25rem;">' + readMore(post) + "</p>";
+      "</div>";
   }
 
   function renderCard(post) {
     return (
       '<article class="post-card">' +
-      "<h3>" + escapeHTML(post.title) + "</h3>" +
+      "<h3>" + titleLink(post) + "</h3>" +
       '<p class="excerpt">' + escapeHTML(post.author) + "</p>" +
-      '<p style="margin-top:0.4rem;">' + readMore(post) + "</p>" +
       "</article>"
     );
   }
@@ -42,8 +43,7 @@
     return (
       '<article class="archive-item">' +
       '<span class="archive-mark" aria-hidden="true">✳</span>' +
-      "<h3><a href=\"" + escapeHTML(post.external_url) + "\" target=\"_blank\" rel=\"noopener\">" +
-      escapeHTML(post.title) + "</a></h3>" +
+      "<h3>" + titleLink(post) + "</h3>" +
       "<p>" + escapeHTML(post.author) + "</p>" +
       "</article>"
     );

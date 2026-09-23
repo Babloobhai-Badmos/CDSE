@@ -2,14 +2,35 @@
 (function () {
   "use strict";
 
-  /* ---------- Header goes translucent on scroll ---------- */
+  /* ---------- Header shrinks to a pill on scroll ---------- */
   var header = document.querySelector(".header");
   if (header) {
+    // Hysteresis (different on/off thresholds) stops the class from
+    // flapping — and the transition restarting — when the scroll
+    // position hovers right at a single trigger point (e.g. 15-20px).
+    var ON_AT = 48;
+    var OFF_AT = 16;
+    var ticking = false;
+
     var updateHeaderScrolled = function () {
-      header.classList.toggle("is-scrolled", window.scrollY > 8);
+      ticking = false;
+      var y = window.scrollY;
+      if (!header.classList.contains("is-scrolled") && y > ON_AT) {
+        header.classList.add("is-scrolled");
+      } else if (header.classList.contains("is-scrolled") && y < OFF_AT) {
+        header.classList.remove("is-scrolled");
+      }
     };
+
+    var onScroll = function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(updateHeaderScrolled);
+      }
+    };
+
     updateHeaderScrolled();
-    window.addEventListener("scroll", updateHeaderScrolled, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
   }
 
   /* ---------- Mobile nav toggle ---------- */

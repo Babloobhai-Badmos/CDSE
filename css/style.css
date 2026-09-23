@@ -414,6 +414,8 @@ img { max-width: 100%; height: auto; display: block; }
 /* ---- Sections ---- */
 .section { padding: var(--spacing-lg) 0; }
 .section-alt { background-color: #00000006; }
+.section-tan { background-color: #c2a990; }
+.section-tan .eyebrow { color: #4a3c2c; }
 .section .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -424,6 +426,21 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .section h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0.4rem 0 1rem; }
 .section-intro { max-width: 72ch; color: var(--color-contrast-2); }
+
+/* A section whose heading/body get outsized, editorial treatment so a
+   short block of text still fills its space and reads with presence. */
+.section-hero-text { padding: calc(var(--spacing-lg) * 1.4) 0; }
+.section-hero-text h2 {
+  font-size: clamp(2.2rem, 2.2rem + 2.5vw, 3.6rem);
+  max-width: 20ch;
+  margin: 0.75rem 0 1.5rem;
+}
+.section-hero-text p {
+  font-size: clamp(1.15rem, 1.15rem + 0.4vw, 1.4rem);
+  line-height: 1.65;
+  max-width: 62ch;
+  color: var(--color-contrast-2);
+}
 
 .grid { display: grid; gap: 1.5rem; }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
@@ -505,15 +522,20 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ---- Blog: three-tier listing (hero post / latest / archives) ---- */
 
-/* Tier 1 — the single top post: big image, big fonts */
-.blog-hero { text-align: center; margin-bottom: 1rem; }
+/* Tier 1 — the single top post: image left, big fonts right */
+.blog-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 .blog-hero-media {
   width: 100%;
-  aspect-ratio: 21/9;
+  aspect-ratio: 4/3;
   object-fit: cover;
   border-radius: 14px;
   background: #111;
-  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -522,14 +544,17 @@ img { max-width: 100%; height: auto; display: block; }
   font-style: italic;
   font-size: 1.2rem;
 }
-.blog-hero .tag { margin-bottom: 1rem; }
+.blog-hero .tag { margin-bottom: 0.75rem; }
 .blog-hero h2 {
-  font-size: clamp(2.1rem, 2.1rem + 2.4vw, 3.4rem);
-  max-width: 920px;
-  margin: 0 auto 1.1rem;
+  font-size: clamp(1.9rem, 1.9rem + 1.8vw, 2.8rem);
+  margin: 0 0 0.85rem;
   line-height: 1.1;
 }
-.blog-hero .post-meta { justify-content: center; display: flex; }
+.blog-hero h2 a { text-decoration: none; }
+.blog-hero h2 a:hover { text-decoration: underline; }
+@media (max-width: 860px) {
+  .blog-hero { grid-template-columns: 1fr; }
+}
 
 /* Section headings shared by "Latest" and "Archives" */
 .archive-heading { text-align: center; margin-bottom: 2.5rem; }
@@ -568,8 +593,9 @@ img { max-width: 100%; height: auto; display: block; }
   margin-bottom: 1rem;
 }
 .post-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-.post-card p.excerpt { color: var(--color-contrast-2); font-size: 0.95rem; margin-bottom: 0.75rem; flex-grow: 1; }
-.post-card a.post-link { font-weight: 600; text-decoration: underline; }
+.post-card h3 a { text-decoration: none; }
+.post-card h3 a:hover { text-decoration: underline; }
+.post-card p.excerpt { color: var(--color-contrast-2); font-size: 0.95rem; flex-grow: 1; }
 
 /* Tier 3 — "Archives": compact text grid, asterisk mark + underlined caps title */
 .archive-grid {
