@@ -687,8 +687,29 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 0.85em;
 }
 
-/* ---- Footer ---- */
-.footer { background-color: #00000008; padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg); }
+/* ---- Footer ----
+   Solid black, like the header, instead of a glass/blur effect — the
+   footer has no scrolling content behind it for a backdrop-filter to
+   act on, so "glass" here would just be inert and hurt contrast. A
+   solid panel bookends the header at the top and reuses the same
+   black/white language without faking a effect that needs motion to
+   read as glass. A soft top glow stands in for the header's blur as
+   the subtle nod between the two. */
+.footer {
+  background-color: #000;
+  color: #f0f2f5;
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
+  position: relative;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.25), transparent);
+}
 .footer-top {
   display: flex;
   justify-content: space-between;
@@ -704,10 +725,13 @@ img { max-width: 100%; height: auto; display: block; }
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
+  color: #fff;
 }
-.footer-contact p { color: var(--color-text); margin-bottom: 0.4rem; }
+.footer-contact p { color: #c9cfd8; margin-bottom: 0.4rem; }
+.footer-contact a { color: #f0f2f5; }
 .footer-nav ul, .footer-social ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-.footer-nav a, .footer-social a { font-size: 0.9rem; color: var(--color-text); }
+.footer-nav a, .footer-social a { font-size: 0.9rem; color: #c9cfd8; }
+.footer-nav a:hover, .footer-social a:hover, .footer-contact a:hover { color: #fff; }
 
 .footer-bottom {
   display: flex;
@@ -718,11 +742,11 @@ img { max-width: 100%; height: auto; display: block; }
   max-width: var(--max-width);
   margin: 3rem auto 0;
   padding-top: 1.5rem;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid rgba(255,255,255,0.15);
 }
-.footer-bottom-title { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--color-text); }
+.footer-bottom-title { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: #fff; }
 .footer-bottom-title a { color: inherit; }
-.footer-credits { font-size: 0.9rem; color: var(--color-text); }
+.footer-credits { font-size: 0.9rem; color: #c9cfd8; }
 
 @media (max-width: 768px) {
   .footer-top { flex-direction: column; }
