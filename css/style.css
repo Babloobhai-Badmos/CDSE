@@ -150,7 +150,11 @@ img { max-width: 100%; height: auto; display: block; }
     background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
 }
 .header.is-scrolled .header-inner {
-  max-width: fit-content;
+  /* A concrete length, not `fit-content` — CSS can't smoothly interpolate
+     a transition from a fixed max-width to an intrinsic-sizing keyword,
+     so it was snapping instead of shrinking, which read as "flutter". */
+  max-width: 640px;
+  justify-content: center;
   gap: 0.85rem;
   padding: 0.5rem 1.1rem;
   background-color: rgba(0, 0, 0, 0.72);
