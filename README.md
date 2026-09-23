@@ -12,9 +12,10 @@ mobile/overflow menu uses a plain three-bar icon.
 ## Pages
 
 - `index.html` — Home (hero → pull-quote → footer only, per the reference)
-- `about.html` — About the Centre, mission, areas of work
-- `projects.html` — All 6 listed projects: Accessibility Lab, golf-cart service, the April 2025 infrastructure audit, UN Millennium Fellowship (Saathi Rights and Reach), and the September 2025 staff sensitization session
-- `blog.html` — Medium-style archive (featured post + card grid) of the real 16-post archive, plus the real Submission Guidelines
+- `about.html` — Who we are → what we do → full-screen sticky-scroll image → milestones → quote (bottom, before footer)
+- `projects.html` — All 6 listed projects: Accessibility Lab (as a scroll-reveal), golf-cart service, the April 2025 infrastructure audit, UN Millennium Fellowship (Saathi Rights and Reach), and the September 2025 staff sensitization session
+- `blog.html` — Three-tier archive: one hero post (big image, big fonts) → "Latest" (next 3, as cards) → "Archives" (the rest, compact text grid — asterisk mark, underlined small-caps title, byline)
+- `submit-blog.html` — Submission guidelines + email/Google Form ways to submit a blog
 - `get-involved.html` — Membership / volunteer application form
 - `report-issue.html` — Campus accessibility issue-report form
 - `contact.html` — Contact / feedback form
@@ -25,20 +26,20 @@ mobile/overflow menu uses a plain three-bar icon.
   the real 16-post archive from `reference/bhb-blog-archive.html` (title +
   author byline for each — the archive page doesn't publish per-post dates,
   categories, or excerpts, so none are fabricated; each card links out to
-  the full post on nlujcdse.in). `js/blog-render.js` renders it Medium-style
-  (large featured post + responsive card grid) into `blog.html`. Written for
-  a one-function swap to Supabase later — see the comment block at the top
-  of `js/posts.js`.
+  the full post on nlujcdse.in). `js/blog-render.js` splits it into the
+  three tiers on `blog.html` — `posts[0]` as the hero, `posts[1..3]` as
+  "Latest", `posts[4..]` as "Archives" — and is written for a one-function
+  swap to Supabase later (see the comment block at the top of `js/posts.js`).
 - **Forms**: contact/feedback, membership/volunteer, and accessibility issue
   report are each a Google Form embedded as an `<iframe>`. Blog submission
-  leads with CDSE's real, currently-working process — a `.doc`/`.docx`
-  emailed to `cdse.blog@nlujodhpur.ac.in` with a specific subject line and
-  formatting (Times New Roman 12pt, 1.5 spacing, justified) — with a Google
-  Form offered underneath as a convenience alternative. None of the forms
-  are wired to real Google Forms yet — each page has a `FORM_ID_*`
-  placeholder and a `.setup-note` explaining what to create. **See
-  `docs/google-forms-setup.md`** for the exact field list per form and how
-  to get each embed URL.
+  (`submit-blog.html`) leads with CDSE's real, currently-working process — a
+  `.doc`/`.docx` emailed to `cdse.blog@nlujodhpur.ac.in` with a specific
+  subject line and formatting (Times New Roman 12pt, 1.5 spacing, justified)
+  — with a Google Form offered underneath as a convenience alternative.
+  None of the forms are wired to real Google Forms yet — each page has a
+  `FORM_ID_*` placeholder and a `.setup-note` explaining what to create.
+  **See `docs/google-forms-setup.md`** for the exact field list per form
+  and how to get each embed URL.
 - **Automation**: `docs/apps-script-template.gs` is a ready-to-paste Google
   Apps Script that, once attached to a form's response Sheet, emails an
   acknowledgement to the submitter, notifies the right inbox (with

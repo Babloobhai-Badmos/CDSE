@@ -25,7 +25,7 @@ tab" link right below it. Each appears once, in:
 | Contact / Feedback | `contact.html` |
 | Membership / Volunteer | `get-involved.html` |
 | Accessibility Issue Report | `report-issue.html` |
-| Blog Submission | `blog.html` |
+| Blog Submission | `submit-blog.html` |
 
 ### Contact / Feedback (`contact.html`)
 - Full name (short answer, required)
@@ -50,13 +50,13 @@ tab" link right below it. Each appears once, in:
 - Description (paragraph, required)
 - Urgency (multiple choice: Low / Medium / High)
 
-### Blog Submission (`blog.html`)
+### Blog Submission (`submit-blog.html`)
 
 This one is an *alternative* to CDSE's real, currently-working process:
 emailing a `.doc`/`.docx` manuscript to **cdse.blog@nlujodhpur.ac.in** with
 subject line `CDSE Blog Submission – [Title of the Blog]` (see the
-Submission Guidelines on `blog.html`, sourced verbatim from
-`reference/bhb-blog-archive.html`). The blog.html page leads with that
+Submission Guidelines on `submit-blog.html`, sourced verbatim from
+`reference/bhb-blog-archive.html`). The submit-blog.html page leads with that
 email flow (a pre-filled `mailto:` button) and offers this form underneath
 as a convenience. Fields:
 
