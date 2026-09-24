@@ -14,7 +14,7 @@ mobile/overflow menu uses a plain three-bar icon.
 - `index.html` — Home (hero → pull-quote → footer only, per the reference)
 - `about.html` — Who we are → what we do → full-screen sticky-scroll image → milestones → quote (bottom, before footer)
 - `projects.html` — All 6 listed projects: Accessibility Lab (as a scroll-reveal), golf-cart service, the April 2025 infrastructure audit, UN Millennium Fellowship (Saathi Rights and Reach), and the September 2025 staff sensitization session
-- `blog.html` — Three-tier archive: one hero post (big image, big fonts) → "Latest" (next 3, as cards) → "Archives" (the rest, compact text grid — asterisk mark, underlined small-caps title, byline)
+- `blogs.html` — Three-tier archive: one hero post (big image, big fonts) → "Latest" (next 3, as cards) → "Archives" (the rest, compact text grid — asterisk mark, underlined small-caps title, byline)
 - `submit-blog.html` — Submission guidelines + email/Google Form ways to submit a blog
 - `get-involved.html` — Membership / volunteer application form
 - `report-issue.html` — Campus accessibility issue-report form
@@ -27,7 +27,7 @@ mobile/overflow menu uses a plain three-bar icon.
   author byline for each — the archive page doesn't publish per-post dates,
   categories, or excerpts, so none are fabricated; each card links out to
   the full post on nlujcdse.in). `js/blog-render.js` splits it into the
-  three tiers on `blog.html` — `posts[0]` as the hero, `posts[1..3]` as
+  three tiers on `blogs.html` — `posts[0]` as the hero, `posts[1..3]` as
   "Latest", `posts[4..]` as "Archives" — and is written for a one-function
   swap to Supabase later (see the comment block at the top of `js/posts.js`).
 - **Forms**: contact/feedback, membership/volunteer, and accessibility issue

@@ -1,4 +1,4 @@
-// Renders the three-tier blog listing on blog.html using js/posts.js:
+// Renders the three-tier blog listing on blogs.html using js/posts.js:
 //   1. Hero — the single most recent post, image left, big fonts right
 //   2. Latest — the next three posts, as cards
 //   3. Archives — everything else, as a compact text grid (asterisk mark,
