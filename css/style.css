@@ -148,6 +148,13 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 0;
   transition: max-width 0.3s ease, gap 0.3s ease, padding 0.3s ease,
     background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+  /* Force this element onto its own stable compositor layer. Without it,
+     a backdrop-filter on a position: sticky ancestor can get re-rasterized
+     on every scroll frame in some browsers, which shows up as a visible
+     shimmer/flutter even though nothing is logically toggling. */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform, backdrop-filter;
 }
 .header.is-scrolled .header-inner {
   /* A concrete length, not `fit-content` — CSS can't smoothly interpolate
@@ -444,6 +451,41 @@ img { max-width: 100%; height: auto; display: block; }
   line-height: 1.65;
   max-width: 62ch;
   color: var(--color-contrast-2);
+}
+
+/* A structured checklist, in Inter rather than the display serif, for
+   content that's really a set of distinct achievements/actions rather
+   than flowing prose (reads far better as a list than one dense
+   semicolon-joined sentence). */
+.achievement-list {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+  max-width: 60ch;
+}
+.achievement-list li {
+  position: relative;
+  padding-left: 2.25rem;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.05rem, 1.05rem + 0.2vw, 1.2rem);
+  line-height: 1.55;
+  color: var(--color-text);
+}
+.achievement-list li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  text-align: center;
 }
 
 .grid { display: grid; gap: 1.5rem; }

@@ -8,8 +8,8 @@
     // Hysteresis (different on/off thresholds) stops the class from
     // flapping — and the transition restarting — when the scroll
     // position hovers right at a single trigger point (e.g. 15-20px).
-    var ON_AT = 48;
-    var OFF_AT = 16;
+    var ON_AT = 90;
+    var OFF_AT = 20;
     var ticking = false;
 
     var updateHeaderScrolled = function () {
