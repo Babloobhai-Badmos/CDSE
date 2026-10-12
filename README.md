@@ -15,6 +15,8 @@ mobile/overflow menu uses a plain three-bar icon.
 - `about.html` — Who we are → what we do → full-screen sticky-scroll image → milestones → quote (bottom, before footer)
 - `projects.html` — All 6 listed projects: Accessibility Lab (as a scroll-reveal), golf-cart service, the April 2025 infrastructure audit, UN Millennium Fellowship (Saathi Rights and Reach), and the September 2025 staff sensitization session
 - `blogs.html` — Three-tier archive: one hero post (big image, big fonts) → "Latest" (next 3, as cards) → "Archives" (the rest, compact text grid — asterisk mark, underlined small-caps title, byline)
+- `post.html` — A single blog post (`?slug=...`) with its audio player; archive posts without on-site text just link out
+- `admin.html` — Editor page (sign in, write/publish posts, generate audio); needs Supabase, see `docs/supabase-r2-setup.md`
 - `submit-blog.html` — Submission guidelines + email/Google Form ways to submit a blog
 - `get-involved.html` — Membership / volunteer application form
 - `report-issue.html` — Campus accessibility issue-report form
@@ -46,7 +48,8 @@ mobile/overflow menu uses a plain three-bar icon.
   urgency-based subject-line flagging for accessibility reports), and has a
   stubbed-out `pushToSupabase_()` for mirroring responses into Supabase once
   that's connected.
-- **Supabase**: intentionally **not provisioned yet** — you're providing a
+- **Supabase + R2 (built, awaiting accounts)**: `supabase/` has the database schema, seed data and the `generate-audio` Edge Function; `js/posts.js` reads from Supabase once `js/config.js` is filled in and otherwise uses the built-in list. Audio files go to Cloudflare R2. **Setup steps: `docs/supabase-r2-setup.md`.**
+- **Supabase (earlier note)**: was **not provisioned** — you're providing a
   separate account/project for this. When ready, share the project URL and
   anon key and I'll wire up: a `posts` table for the blog (swapping
   `js/posts.js`'s static array for a `fetch` against the REST API), and

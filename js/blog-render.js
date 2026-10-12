@@ -15,10 +15,11 @@
   }
 
   function titleLink(post) {
-    return (
-      '<a href="' + escapeHTML(post.external_url) + '" target="_blank" rel="noopener">' +
-      escapeHTML(post.title) + "</a>"
-    );
+    var attrs = post.isExternal ? ' target="_blank" rel="noopener"' : "";
+    var badge = post.audioUrl
+      ? ' <span class="audio-badge" title="Audio version available">Audio</span>'
+      : "";
+    return '<a href="' + escapeHTML(post.url) + '"' + attrs + ">" + escapeHTML(post.title) + "</a>" + badge;
   }
 
   function renderHero(post, container) {
