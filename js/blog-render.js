@@ -3,6 +3,7 @@
 //   2. Latest — the next three posts, as cards
 //   3. Archives — everything else, as a compact text grid (asterisk mark,
 //      underlined small-caps title, byline)
+// The home page reuses renderCard for a 3-post "From the Blog" teaser.
 // Every title (hero, latest, archives) is itself the link to the full post.
 (function () {
   "use strict";
@@ -49,7 +50,21 @@
     );
   }
 
+  async function initHome() {
+    var gridEl = document.getElementById("home-blog-grid");
+    var sectionEl = document.getElementById("home-blog-section");
+    if (!gridEl || !window.CDSEPosts) return false;
+    var posts = await window.CDSEPosts.getPosts();
+    if (!posts.length) {
+      if (sectionEl) sectionEl.style.display = "none";
+    } else {
+      gridEl.innerHTML = posts.slice(0, 3).map(renderCard).join("");
+    }
+    return true;
+  }
+
   async function init() {
+    if (await initHome()) return;
     var heroEl = document.getElementById("blog-hero");
     var latestGridEl = document.getElementById("latest-grid");
     var latestSectionEl = document.getElementById("latest-section");
