@@ -1,5 +1,8 @@
 -- Seeds the 16 archive posts that still live on nlujcdse.in. Safe to re-run.
 -- They link out until you paste their full text into the `body` column.
+--
+-- GENERATED FILE — do not edit by hand. It is built from js/posts.js by
+-- tools/gen-seed.mjs; run `node tools/gen-seed.mjs` after changing that list.
 
 insert into public.posts (slug, title, author, external_url, published, sort_order) values
   ('4-percent-disability-reservation', 'The 4% That Isn''t: How India''s Disability Reservation Law Loses Its Own Seats', 'Ronit Agarwal and Tanu Tyagi, 2nd-year students at National Law University, Jodhpur', 'https://nlujcdse.in/the-4-that-isnt-how-indias-disability-reservation-law-loses-its-own-seats/', true, 0),

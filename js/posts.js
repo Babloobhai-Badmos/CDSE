@@ -8,8 +8,8 @@
 //
 // Every post is normalised to:
 //   { slug, title, author, summary, hasBody, url, isExternal,
-//     audioUrl, audioDuration, body? }
-// where `url` is the on-site post page (post.html?slug=...) when we hold the
+//     audioUrl, audioDuration, imageUrl, imageAlt, body? }
+// where `url` is the on-site post page (/post?slug=...) when we hold the
 // full text, otherwise the external link.
 
 (function (window) {
@@ -115,7 +115,36 @@
   ];
 
   var LIST_FIELDS =
-    "slug,title,author,summary,external_url,has_body,audio_url,audio_duration_seconds,sort_order,published_at";
+    "slug,title,author,summary,external_url,has_body,audio_url,audio_duration_seconds,image_url,image_alt,sort_order,published_at";
+
+  // Only what post.html needs. Avoids pulling audio_status/audio_error/id/etc.
+  var POST_FIELDS =
+    "slug,title,author,summary,external_url,has_body,body,audio_url,audio_duration_seconds,image_url,image_alt";
+
+  // Repeat visits and back/forward navigation read this instead of the network.
+  var CACHE_TTL_MS = 5 * 60 * 1000;
+  var CACHE_PREFIX = "cdse-post:";
+  var inflight = {};
+
+  function readCache(slug) {
+    try {
+      var raw = window.sessionStorage.getItem(CACHE_PREFIX + slug);
+      if (!raw) return null;
+      var hit = JSON.parse(raw);
+      if (!hit || !hit.at || Date.now() - hit.at > CACHE_TTL_MS) {
+        window.sessionStorage.removeItem(CACHE_PREFIX + slug);
+        return null;
+      }
+      return hit.post || null;
+    } catch (e) { return null; }
+  }
+
+  function writeCache(slug, post) {
+    if (!post) return;
+    try {
+      window.sessionStorage.setItem(CACHE_PREFIX + slug, JSON.stringify({ at: Date.now(), post: post }));
+    } catch (e) { /* private mode or quota: not worth failing over */ }
+  }
 
   function config() {
     var c = window.CDSE_CONFIG || {};
@@ -131,10 +160,12 @@
       summary: row.summary || "",
       hasBody: hasBody,
       isExternal: !hasBody,
-      url: hasBody ? "post.html?slug=" + encodeURIComponent(row.slug) : row.external_url,
+      url: hasBody ? "/post?slug=" + encodeURIComponent(row.slug) : row.external_url,
       externalUrl: row.external_url || "",
       audioUrl: row.audio_url || "",
       audioDuration: row.audio_duration_seconds || 0,
+      imageUrl: row.image_url || "",
+      imageAlt: row.image_alt || "",
       body: typeof row.body === "string" ? row.body : "",
     };
   }
@@ -144,7 +175,20 @@
     var res = await fetch(c.supabaseUrl.replace(/\/$/, "") + "/rest/v1/" + path, {
       headers: { apikey: c.supabaseAnonKey, Authorization: "Bearer " + c.supabaseAnonKey },
     });
-    if (!res.ok) throw new Error("Supabase request failed: " + res.status);
+    if (!res.ok) {
+      // PostgREST explains refusals in the body (e.g. "permission denied for
+      // table posts"). Passing that through means the console warning says
+      // what is actually wrong instead of just "401".
+      var detail = "";
+      try {
+        var body = await res.json();
+        detail = body && (body.message || body.hint || body.code);
+        if (body && body.hint && body.message && body.hint !== body.message) {
+          detail += " — " + body.hint;
+        }
+      } catch (e) { /* non-JSON error body */ }
+      throw new Error("Supabase request failed: " + res.status + (detail ? " (" + detail + ")" : ""));
+    }
     return res.json();
   }
 
@@ -169,16 +213,42 @@
 
   // Returns the full post (with body) or null.
   async function getPost(slug) {
-    if (config()) {
-      try {
-        var rows = await rest("posts?select=*&published=eq.true&slug=eq." + encodeURIComponent(slug) + "&limit=1");
-        return rows.length ? normalise(rows[0]) : null;
-      } catch (e) {
-        if (window.console) console.warn("Using built-in post list:", e.message);
+    var cached = readCache(slug);
+    if (cached) return cached;
+    if (inflight[slug]) return inflight[slug];
+
+    inflight[slug] = (async function () {
+      if (config()) {
+        try {
+          var rows = await rest(
+            "posts?select=" + POST_FIELDS + "&published=eq.true&slug=eq." + encodeURIComponent(slug) + "&limit=1"
+          );
+          if (rows.length) {
+            var post = normalise(rows[0]);
+            writeCache(slug, post);
+            return post;
+          }
+          return null;
+        } catch (e) {
+          if (window.console) console.warn("Using built-in post list:", e.message);
+        }
       }
+      return staticPosts().find(function (p) { return p.slug === slug; }) || null;
+    })();
+
+    try {
+      return await inflight[slug];
+    } finally {
+      delete inflight[slug];
     }
-    return staticPosts().find(function (p) { return p.slug === slug; }) || null;
   }
 
-  window.CDSEPosts = { getPosts: getPosts, getPost: getPost };
+  // Called when a listing link is hovered or focused, so the post page can
+  // render from cache instead of waiting for the network.
+  function prefetch(slug) {
+    if (!slug || readCache(slug)) return;
+    getPost(slug).catch(function () {});
+  }
+
+  window.CDSEPosts = { getPosts: getPosts, getPost: getPost, prefetch: prefetch };
 })(window);

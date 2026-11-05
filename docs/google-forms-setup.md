@@ -1,8 +1,10 @@
 # Google Forms + Apps Script setup
 
-The site embeds four Google Forms as `<iframe>`s. None of them are live yet —
-each page has a `FORM_ID_*` placeholder and a `.setup-note` block explaining
-what to create. Do this once you (or CDSE's admin) have access to a Google
+The site embeds four Google Forms as `<iframe>`s. None of them are live yet:
+each page still has a `FORM_ID_*` placeholder in the embed `src` and in the
+"open in a new tab" fallback link. Until those are replaced the iframe shows a
+Google error page inside an otherwise finished design, so create the forms
+before publishing. Do this once you (or CDSE's admin) have access to a Google
 account that should own these forms.
 
 ## 1. Create the four forms

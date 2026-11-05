@@ -16,15 +16,23 @@
 
   function titleLink(post) {
     var attrs = post.isExternal ? ' target="_blank" rel="noopener"' : "";
+    // Warm the post cache on hover/focus so the click renders instantly.
+    var pre = !post.isExternal && post.slug
+      ? ' data-prefetch-slug="' + escapeHTML(post.slug) + '"'
+      : "";
     var badge = post.audioUrl
       ? ' <span class="audio-badge" title="Audio version available">Audio</span>'
       : "";
-    return '<a href="' + escapeHTML(post.url) + '"' + attrs + ">" + escapeHTML(post.title) + "</a>" + badge;
+    return '<a href="' + escapeHTML(post.url) + '"' + attrs + pre + ">" + escapeHTML(post.title) + "</a>" + badge;
   }
 
   function renderHero(post, container) {
+    var media = post.imageUrl
+      ? '<img class="blog-hero-media" src="' + escapeHTML(post.imageUrl) + '" alt="' +
+        escapeHTML(post.imageAlt || post.title) + '" decoding="async">'
+      : '<div class="blog-hero-media" aria-hidden="true">CDSE Blog</div>';
     container.innerHTML =
-      '<div class="blog-hero-media" aria-hidden="true">CDSE Blog</div>' +
+      media +
       "<div>" +
       '<span class="tag">Latest</span>' +
       "<h2>" + titleLink(post) + "</h2>" +
@@ -33,8 +41,14 @@
   }
 
   function renderCard(post) {
+    // The thumbnail is decorative: the title next to it is the real link text,
+    // so an empty alt avoids announcing the same thing twice.
+    var thumb = post.imageUrl
+      ? '<img src="' + escapeHTML(post.imageUrl) + '" alt="" loading="lazy" decoding="async">'
+      : "";
     return (
       '<article class="post-card">' +
+      thumb +
       "<h3>" + titleLink(post) + "</h3>" +
       '<p class="excerpt">' + escapeHTML(post.author) + "</p>" +
       "</article>"
@@ -80,7 +94,7 @@
       if (archiveSectionEl) archiveSectionEl.style.display = "none";
       var empty = document.createElement("div");
       empty.className = "empty-state";
-      empty.innerHTML = 'No posts yet — check back soon, or <a href="submit-blog.html">submit the first one</a>.';
+      empty.innerHTML = 'No posts yet — check back soon, or <a href="/submit-blog">submit the first one</a>.';
       heroEl.parentNode.appendChild(empty);
       return;
     }
@@ -104,5 +118,17 @@
     }
   }
 
+  // One delegated listener for the whole page, not one per card.
+  function wirePrefetch() {
+    if (!window.CDSEPosts || !window.CDSEPosts.prefetch) return;
+    function warm(node) {
+      var a = node && node.closest ? node.closest("a[data-prefetch-slug]") : null;
+      if (a) window.CDSEPosts.prefetch(a.getAttribute("data-prefetch-slug"));
+    }
+    document.addEventListener("pointerover", function (e) { warm(e.target); }, { passive: true });
+    document.addEventListener("focusin", function (e) { warm(e.target); });
+  }
+
+  document.addEventListener("DOMContentLoaded", wirePrefetch);
   document.addEventListener("DOMContentLoaded", init);
 })();

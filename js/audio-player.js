@@ -40,6 +40,7 @@
   function mountFile(container, opts) {
     var uid = "ap" + Math.random().toString(36).slice(2, 8);
     var key = "cdse-audio-pos:" + opts.src;
+    var lastSaved = -1;
     var audio = el("audio", { preload: "none", src: opts.src });
     var root = el("div", { class: "audio-player", role: "group", "aria-label": "Audio version of this post" });
     root.appendChild(el("p", { class: "ap-title" }, "Listen to this post"));
@@ -116,7 +117,10 @@
     });
     audio.addEventListener("timeupdate", function () {
       updateSeek();
-      if (Math.floor(audio.currentTime) % 5 === 0) savePos();
+      // Save at most once per 5-second mark; the old check re-wrote
+      // localStorage several times a second while the clock sat on a multiple.
+      var sec = Math.floor(audio.currentTime);
+      if (sec % 5 === 0 && sec !== lastSaved) { lastSaved = sec; savePos(); }
     });
     audio.addEventListener("waiting", function () { status.textContent = "Loading audio…"; });
     audio.addEventListener("playing", function () { status.textContent = ""; });

@@ -23,7 +23,9 @@
   --color-success-text: #1e4620;
   --color-error-bg: #fdecea;
   --color-error-text: #7a1f1f;
-  --focus-ring: 3px solid #ffbf47;
+  --focus-ring: 3px solid #1a1a2e;
+  /* Amber halo keeps the indicator visible on the black header too. */
+  --focus-halo: 0 0 0 5px #ffbf47;
 
   --spacing-sm: 1rem;
   --spacing-md: min(2.5rem, 3vw);
@@ -34,6 +36,10 @@
 
 html { scroll-behavior: smooth; font-size: 100%; }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 body.high-contrast {
   --color-text: #000000;
   --color-contrast-2: #000000;
@@ -43,6 +49,18 @@ body.high-contrast {
 }
 body.high-contrast .card,
 body.high-contrast .form-card { border-width: 2px; }
+body.high-contrast .section-alt,
+body.high-contrast .footer,
+body.high-contrast .form-intro,
+body.high-contrast .gform-fallback,
+body.high-contrast .section-tan,
+body.high-contrast .form-privacy { background: #ffffff; }
+body.high-contrast .section-tan .eyebrow,
+body.high-contrast .form-privacy { color: #000000; }
+body.high-contrast .write-cta p,
+body.high-contrast .ap-note { color: #ffffff; opacity: 1; }
+body.high-contrast .footer-bottom { border-top-color: #000000; }
+body.high-contrast .quote-section { --color-contrast: #000000; }
 
 body {
   font-family: 'Inter', sans-serif;
@@ -54,7 +72,31 @@ body {
 
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; }
-:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+
+/* Links inside body copy are underlined rather than colour-only
+   (WCAG 2.1 SC 1.4.1). Navigation, buttons and cards keep their
+   designed, non-underlined look. */
+.section p a,
+.section-intro a,
+.card p a,
+.post-body a,
+.post-external a,
+.footer-contact p a,
+.gform-fallback a,
+.form-intro a,
+.form-privacy a,
+.empty-state a,
+.admin-help a,
+.admin-card p a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+  box-shadow: var(--focus-halo);
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Cardo', serif;
@@ -194,6 +236,7 @@ img { max-width: 100%; height: auto; display: block; }
   max-width: 480px;
   overflow: hidden;
   white-space: nowrap;
+  line-height: 1.25;
   transition: max-width 0.3s ease, opacity 0.2s ease;
 }
 .header-title a { color: inherit; text-decoration: none; }
@@ -798,7 +841,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .gform-embed {
   width: 100%;
-  min-height: 900px;
+  min-height: clamp(560px, 78vh, 900px);
   border: none;
   border-radius: 10px;
   background: #fff;
@@ -809,6 +852,13 @@ img { max-width: 100%; height: auto; display: block; }
   margin-top: 0.75rem;
   background: #00000006;
   font-size: 0.9rem;
+}
+.form-privacy {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-contrast-2);
 }
 .setup-note {
   border: 1px dashed var(--color-contrast-3);
@@ -886,16 +936,72 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ---- Single post page + audio player ---- */
+.post-status[hidden] { display: none; }
+.post-status { color: var(--color-contrast-2); margin: 0 0 1rem; }
+/* Reserve the reading column so swapping "Loading…" for the article doesn't shift layout. */
+#post-root { min-height: 60vh; }
 .post-container { max-width: 760px; }
 .post-back { display: inline-block; margin-bottom: 1.25rem; font-size: 0.9rem; }
-.post-title { font-size: clamp(1.9rem, 1.9rem + 1.4vw, 2.7rem); line-height: 1.15; margin-bottom: 0.75rem; }
+.post-title { font-size: clamp(1.9rem, 1.9rem + 1.4vw, 2.7rem); line-height: 1.15; margin-bottom: 0.75rem; text-wrap: balance; }
 .post-meta { color: var(--color-contrast-2); margin-bottom: 0.25rem; }
 .post-readtime { color: var(--color-contrast-2); font-size: 0.9rem; margin: 0.75rem 0 1.5rem; }
 .post-external { margin: 1.5rem 0 1rem; }
 .post-audio { margin-top: 1.5rem; }
-.post-body { font-family: 'Cardo', serif; font-size: 1.2rem; line-height: 1.75; }
-.post-body p { white-space: pre-line; margin: 0 0 1.25rem; }
-.post-body h2 { font-size: 1.6rem; margin: 2rem 0 0.75rem; }
+.post-hero-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #eee;
+  margin: 1.25rem 0 0;
+}
+.post-body { font-family: 'Cardo', serif; font-size: 1.2rem; line-height: 1.75; max-width: 68ch; }
+.post-body p { white-space: pre-line; margin: 0 0 1.25rem; text-wrap: pretty; }
+/* Anchor targets must clear the sticky header. */
+.post-body h2 { font-size: 1.6rem; margin: 2rem 0 0.75rem; scroll-margin-top: 7rem; text-wrap: balance; }
+
+/* Contents list, only rendered for posts with 3+ headings. */
+.post-toc {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0 2rem;
+  max-width: 68ch;
+}
+.post-toc-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-contrast-2);
+  margin: 0 0 0.6rem;
+}
+.post-toc ol { margin: 0; padding-left: 1.15rem; }
+.post-toc li { margin: 0.35rem 0; }
+.post-toc a { text-decoration: none; }
+.post-toc a:hover, .post-toc a:focus-visible { text-decoration: underline; }
+
+/* Reading progress. Decorative only: aria-hidden, no pointer events. */
+.read-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 600;
+  pointer-events: none;
+}
+.read-progress-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  /* difference keeps it visible over both the black header and the cream page */
+  background: #fff;
+  mix-blend-mode: difference;
+}
 
 .audio-badge {
   display: inline-block;
@@ -948,7 +1054,7 @@ img { max-width: 100%; height: auto; display: block; }
 .ap-time { font: 500 0.85rem 'Inter', sans-serif; min-width: 2.8rem; font-variant-numeric: tabular-nums; }
 .ap-status { min-height: 1.3em; margin: 0.5rem 0 0; font-size: 0.9rem; }
 .ap-download { color: #fff; font-size: 0.9rem; }
-.audio-player :focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+.audio-player :focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; box-shadow: 0 0 0 6px #000; }
 @media (max-width: 520px) {
   .ap-speed { margin-left: 0; width: 100%; }
 }
@@ -974,4 +1080,9 @@ img { max-width: 100%; height: auto; display: block; }
 .admin-list small { display: block; color: var(--color-contrast-2); }
 .admin-actions { justify-content: flex-start; }
 .admin-audio-status { min-height: 1.4em; margin: 0.75rem 0 0; font-weight: 600; }
+.admin-upload-row { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #00000020; }
+.admin-upload-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-top: 0.4rem; }
+.admin-upload-controls input[type="file"] { flex: 1 1 220px; border-style: dashed; }
+#upload-result { word-break: break-all; }
+#upload-result a { font-weight: 600; }
 @media (max-width: 860px) { .admin-grid { grid-template-columns: 1fr; } }

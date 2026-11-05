@@ -5,7 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Editor — CDSE, NLU Jodhpur</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="A CDSE blog post on disability rights, accessibility, and inclusive policy.">
+<meta name="description" content="Editor-only page for writing, publishing and generating audio for CDSE blog posts.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CDSE, NLU Jodhpur">
+<meta property="og:title" content="Editor — CDSE, NLU Jodhpur">
+<meta property="og:description" content="Editor-only page for writing, publishing and generating audio for CDSE blog posts.">
+<meta property="og:image" content="https://nlujcdse.in/wp-content/uploads/2025/12/CDSE-Logo-no-BG.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Editor — CDSE, NLU Jodhpur">
+<meta name="twitter:description" content="Editor-only page for writing, publishing and generating audio for CDSE blog posts.">
+<meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,26 +28,26 @@
   <div class="header-inner">
     <div class="header-brand">
       <div class="header-logo">
-        <a href="index.html"><img src="https://nlujcdse.in/wp-content/uploads/2025/12/CDSE-Logo-no-BG.png" alt="CDSE Logo"></a>
+        <a href="/"><img src="https://nlujcdse.in/wp-content/uploads/2025/12/CDSE-Logo-no-BG.png" alt="CDSE Logo"></a>
       </div>
-      <h1 class="header-title"><a href="index.html">The Centre for Disability Studies and Empowerment</a></h1>
+      <p class="header-title"><a href="/">The Centre for Disability Studies and Empowerment</a></p>
     </div>
     <button class="mobile-menu-btn" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v1.5H4zM4 11.25h16v1.5H4zM4 16.5h16v1.5H4z"/></svg>
     </button>
     <nav class="header-nav" id="primary-nav" aria-label="Primary">
       <ul>
-        <li><a href="about.html">About the Centre</a></li>
-        <li><a href="projects.html">Our Projects</a></li>
-        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="/about">About the Centre</a></li>
+        <li><a href="/projects">Our Projects</a></li>
+        <li><a href="/blogs">Blogs</a></li>
         <li class="nav-more">
-          <button type="button" class="nav-more-btn" aria-haspopup="true" aria-expanded="false" aria-label="More options">
+          <button type="button" class="nav-more-btn" aria-expanded="false" aria-controls="more-nav" aria-label="More options">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v1.5H4zM4 11.25h16v1.5H4zM4 16.5h16v1.5H4z"/></svg>
           </button>
-          <ul class="nav-more-menu">
-            <li><a href="report-issue.html">Report an Issue</a></li>
-            <li><a href="get-involved.html">Get Involved</a></li>
-            <li><a href="contact.html">Contact</a></li>
+          <ul class="nav-more-menu" id="more-nav">
+            <li><a href="/report-issue">Report an Issue</a></li>
+            <li><a href="/get-involved">Get Involved</a></li>
+            <li><a href="/contact">Contact</a></li>
             <li class="nav-more-a11y">
               <span class="nav-more-label">Accessibility</span>
               <div class="a11y-controls">
@@ -59,7 +68,7 @@
   <section class="page-hero">
     <div class="container">
       <h1>Blog editor</h1>
-      <p class="lead">For CDSE editors only. Write posts, publish them, and generate their audio version.</p>
+      <p class="lead">For CDSE editors only. Write posts, upload their audio to R2, and publish.</p>
     </div>
   </section>
 
@@ -102,13 +111,40 @@
             <p class="admin-help" id="body-help">Plain text. Leave a blank line between paragraphs. Start a line with <code>## </code> for a heading. This text is also what the audio is made from.</p>
             <label for="f-ext">Link to original (only for posts hosted elsewhere)</label>
             <input id="f-ext" type="url">
+            <label for="f-image">Cover image URL (shown at the top of the post and on its listing card)</label>
+            <input id="f-image" type="url">
+            <div class="admin-upload-row">
+              <label for="f-image-file">Upload cover image to R2 (jpg, png, webp, max 25MB) — fills the URL above</label>
+              <div class="admin-upload-controls">
+                <input id="f-image-file" type="file" accept="image/*">
+                <button class="btn btn-secondary" type="button" id="upload-image">Upload image</button>
+              </div>
+              <p class="admin-help" id="image-upload-result" role="status" aria-live="polite"></p>
+            </div>
+            <label for="f-image-alt">Image description (alt text for screen readers)</label>
+            <input id="f-image-alt" aria-describedby="image-alt-help">
+            <p class="admin-help" id="image-alt-help">Say what the image shows in a few words. Left blank, the post title is used.</p>
             <label for="f-audio">Audio file URL (filled in automatically; paste one to use your own recording)</label>
             <input id="f-audio" type="url">
+            <div class="admin-upload-row">
+              <label for="f-audio-file">Upload audio to R2 (mp3, max 25MB) — fills the URL above and saves to Supabase on Save</label>
+              <div class="admin-upload-controls">
+                <input id="f-audio-file" type="file" accept="audio/mpeg,audio/mp3,audio/wav,audio/mp4,audio/aac,audio/ogg,audio/webm">
+                <button class="btn btn-secondary" type="button" id="upload-audio">Upload audio</button>
+              </div>
+            </div>
+            <div class="admin-upload-row">
+              <label for="f-media-file">Upload image / file to R2 (jpg, png, webp, pdf, docx, max 25MB) — gives you a public link</label>
+              <div class="admin-upload-controls">
+                <input id="f-media-file" type="file" accept="image/*,.pdf,.doc,.docx">
+                <button class="btn btn-secondary" type="button" id="upload-media">Upload file</button>
+              </div>
+              <p class="admin-help" id="upload-result" role="status" aria-live="polite"></p>
+            </div>
             <label class="admin-check"><input type="checkbox" id="f-pub"> Published (visible to everyone)</label>
             <p class="admin-audio-status" id="audio-status" role="status" aria-live="polite"></p>
             <div class="btn-row admin-actions">
               <button class="btn btn-primary" type="submit">Save post</button>
-              <button class="btn btn-secondary" type="button" id="gen-audio">Generate audio</button>
               <button class="btn btn-secondary" type="button" id="delete-post">Delete</button>
             </div>
           </form>
@@ -127,11 +163,12 @@
     <div class="footer-nav">
       <h3>Explore</h3>
       <ul>
-        <li><a href="about.html">About the Centre</a></li>
-        <li><a href="projects.html">Our Projects</a></li>
-        <li><a href="blogs.html">Blogs</a></li>
-        <li><a href="get-involved.html">Get Involved</a></li>
-        <li><a href="report-issue.html">Report an Issue</a></li>
+        <li><a href="/about">About the Centre</a></li>
+        <li><a href="/projects">Our Projects</a></li>
+        <li><a href="/blogs">Blogs</a></li>
+        <li><a href="/get-involved">Get Involved</a></li>
+        <li><a href="/report-issue">Report an Issue</a></li>
+        <li><a href="/accessibility">Accessibility statement</a></li>
       </ul>
     </div>
     <div class="footer-social">
@@ -144,12 +181,12 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-bottom-title"><a href="index.html">The Centre for Disability Studies and Empowerment</a></p>
+    <p class="footer-bottom-title"><a href="/">The Centre for Disability Studies and Empowerment</a></p>
     <p class="footer-credits">© <span id="current-year">2026</span> CDSE, NLU Jodhpur</p>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0"></script>
 <script src="js/config.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/main.js"></script>

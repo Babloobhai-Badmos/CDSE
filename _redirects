@@ -1,0 +1,22 @@
+# Clean URLs: /projects instead of /projects.html
+#
+# Cloudflare Pages and Netlify both read this file from the publish directory.
+# They already serve /projects from projects.html; these rules only make the
+# old .html addresses (bookmarks, shared links, search results) redirect to the
+# canonical form instead of competing with it.
+#
+# Verified locally by tools/serve.mjs, which applies the same mapping.
+# GitHub Pages ignores this file and cannot do clean URLs — see README.
+
+/index.html      /             301
+
+/about.html          /about          301
+/projects.html       /projects       301
+/blogs.html          /blogs          301
+/post.html           /post           301
+/submit-blog.html    /submit-blog    301
+/get-involved.html   /get-involved   301
+/report-issue.html   /report-issue   301
+/contact.html        /contact        301
+/accessibility.html  /accessibility  301
+/admin.html          /admin          301

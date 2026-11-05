@@ -1,0 +1,25 @@
+name: site checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # No npm install: tools/ has no dependencies.
+      - name: Markup, link and a11y invariants
+        run: node tools/check.mjs
+
+      # supabase/seed.sql is generated from js/posts.js — fail if it is stale.
+      - name: Seed file is up to date
+        run: |
+          node tools/gen-seed.mjs
+          git diff --exit-code -- supabase/seed.sql
