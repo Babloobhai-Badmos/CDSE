@@ -56,10 +56,14 @@ Links in the HTML are written as root-absolute clean paths (`/projects`), and
 still asks for `/projects.html` to the clean address.
 
 **Host requirement:** the server must resolve an extensionless path to the
-matching `.html` file. Cloudflare Pages and Netlify both do this out of the box
-and read `_redirects`. GitHub Pages does **not** — on GitHub Pages the only
-option is one directory per page (`projects/index.html`), which shows
-`/projects/` with a trailing slash. Vercel needs a `vercel.json` rewrite.
+matching `.html` file.
+
+| Host | What it needs |
+|---|---|
+| **Vercel** | `vercel.json` with `"cleanUrls": true` — included. Serving `/projects.html` then returns `308 → /projects`, and any path without an extension is rewritten to the matching `.html`. `404.html` is used automatically. Vercel ignores `_redirects`. |
+| **Cloudflare Pages** | Nothing — clean URLs work out of the box, and `_redirects` is read. |
+| **Netlify** | Nothing — "Pretty URLs" is on by default, and `_redirects` is read. |
+| **GitHub Pages** | Not supported. The only option is one directory per page (`projects/index.html`), which shows `/projects/` with a trailing slash. |
 
 Locally, `.html` files are not directly usable — open a terminal and run:
 
